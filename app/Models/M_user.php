@@ -29,6 +29,20 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getUser($username){
+      $sql = "SELECT * FROM tb_user WHERE username = '$username'";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getUserById($iduser){  
+      $sql = "SELECT * FROM tb_user WHERE iduser = $iduser";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countUsername($username){
+      $sql = "SELECT count(iduser) as hitung FROM tb_user WHERE username = '$username'";
+      return $this->db->query($sql)->getResult();
+    }
 	}
 
 ?>

@@ -13,7 +13,7 @@
 
 	    	if ($flag == 0) {
 					session_destroy();
-					return redirect()->to(base_url('auth'));
+					return redirect()->to(base_url('auth/login'));
 	    	}
 
 	    	if ($idgroup == 1) {

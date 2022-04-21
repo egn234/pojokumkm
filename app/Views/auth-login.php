@@ -23,14 +23,15 @@
                                     </a>
                                     <p class="text-muted mb-4 mt-3">Enter your username and password</p>
                                 </div>
+                                <?=session()->getFlashdata('notif_login')?>
                                 <form action="<?=base_url()?>/auth/login_proc" method="POST">
                                     <div class="form-group mb-3">
                                         <label for="username">Username</label>
-                                        <input class="form-control" type="text" id="username" required="" placeholder="Enter your username">
+                                        <input class="form-control" type="text" id="username" name="username" required="" placeholder="Enter your username">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
+                                        <input class="form-control" type="password" required="" id="password" name="password" placeholder="Enter your password">
                                     </div>
                                     <div class="form-group mb-0 text-center">
                                         <button class="btn btn-primary btn-block" type="submit"> Log In </button>

@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\M_user;
 
 class auth extends BaseController{
 	
@@ -36,7 +37,7 @@ class auth extends BaseController{
 
 					session()->setFlashdata('notif_login', $alert);
 					session()->setFlashdata('s_username', $username);
-					return redirect()->to(base_url('auth'));
+					return redirect()->to(base_url('auth/login'));
 				}else{
 					$userdata = [
 						'iduser' => $user->iduser,
@@ -48,8 +49,8 @@ class auth extends BaseController{
 					session()->set($userdata);
 					
 					if($user->idgroup == 1){
-						// return redirect()->to(base_url('pengelola/dashboard'));
-						echo "PENGELOLA WOHOO";
+						return redirect()->to(base_url('pengelola/dashboard'));
+						echo session()->get('username');
 					}
 					elseif($user->idgroup == 2){
 						// return redirect()->to(base_url('umkm/dashboard'));
@@ -58,25 +59,29 @@ class auth extends BaseController{
 				}
 
 			}else{
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-										Password salah
-									</div>';
-				session()->setFlashdata('notif_login', $alert);
+				$alert = view('homepage_partial/notification-alert', 
+						['notif_text' => 'Password Salah',
+						 'status' => 'danger']
+						);
+
+					session()->setFlashdata('notif_login', $alert);
 				session()->setFlashdata('s_username', $username);
-				return redirect()->to(base_url('auth'));
+				return redirect()->to(base_url('auth/login'));
 			}
 		}else{
-			$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-									User Tidak Ada
-								</div>';
-			session()->setFlashdata('notif_login', $alert);
+			$alert = view('homepage_partial/notification-alert', 
+						['notif_text' => 'User Tidak Ada',
+						 'status' => 'danger']
+						);
+
+					session()->setFlashdata('notif_login', $alert);
 			session()->setFlashdata('s_username', $username);
-			return redirect()->to(base_url('auth'));
+			return redirect()->to(base_url('auth/login'));
 		}
 	}
 
 	public function logout(){
 		session_destroy();
-		return redirect()->to(base_url('auth'));
+		return redirect()->to(base_url('auth/login'));
 	}
 }

@@ -28,7 +28,11 @@
       $sql = "SELECT * FROM tb_pengelola JOIN tb_user USING (iduser)";
       return $this->db->query($sql)->getResult();
     }
-
+    
+    public function getJoinUserPengelola($iduser){
+      $sql = "SELECT * FROM tb_user JOIN tb_pengelola USING(iduser) WHERE iduser = $iduser";
+      return $this->db->query($sql)->getResult();
+    }
   }
 
 ?>
