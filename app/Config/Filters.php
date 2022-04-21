@@ -23,6 +23,9 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'pengelola_auth' => \App\Filters\PengelolaFilter::class,
+        'umkm_auth' => \App\Filters\UmkmFilter::class,
+        'login_auth' => \App\Filters\LoginFilter::class,
     ];
 
     /**
@@ -64,5 +67,15 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'pengelola_auth' => [
+            'before' => ['pengelola/*']
+        ],
+        'umkm_auth' => [
+            'before' => ['umkm/*']
+        ],
+        'login_auth' => [
+            'before' => ['Register', 'Auth']
+        ],
+    ];
 }
