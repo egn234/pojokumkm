@@ -129,3 +129,4 @@ nb-configuration.xml
 # WEB DATA STUFF
 
 public/webdata/*
+writable/*
