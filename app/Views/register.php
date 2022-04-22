@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?$title_meta?>
+    <?=$title_meta?>
     <?= $this->include('homepage_partial/head-css') ?>
 </head>
 
@@ -18,32 +18,32 @@
                         <div class="card hover-box-shadow">
                             <div class="card-body px-auto">
                                 <h4 class="card-title mt-3 text-center">Create Account</h4>
-                                <p class="text-center">Get started with your free account</p>
                                 <hr class="divider divider-fade">
-                                <form>
+                                <?=session()->getFlashdata('notif_login')?>
+                                <form action="<?=base_url()?>/register/reg_proc" method="POST">
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="las la-user"></i> </span>
                                         </div>
-                                        <input name="" class="form-control" placeholder="Full name" type="text">
+                                        <input name="username" class="form-control" required placeholder="Username" type="text">
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="las la-envelope"></i> </span>
                                         </div>
-                                        <input name="" class="form-control" placeholder="Email address" type="email">
+                                        <input name="email" class="form-control" required placeholder="Email address" type="email">
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="las la-key"></i> </span>
                                         </div>
-                                        <input class="form-control" placeholder="Create password" type="password">
+                                        <input name="pass1" class="form-control" required placeholder="Create password" type="password" pattern=".{8,}" title="min. 8 characters">
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="las la-key"></i> </span>
                                         </div>
-                                        <input class="form-control" placeholder="Repeat password" type="password">
+                                        <input name="pass2" class="form-control" required placeholder="Repeat password" type="password">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block"> Create Account </button>

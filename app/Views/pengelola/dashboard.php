@@ -1560,6 +1560,7 @@
         </div>
         <!-- End Page-content -->
 
+        <?= $this->include('partials/right-sidebar') ?>
         <?= $this->include('partials/footer') ?>
     </div>
     <!-- end main content-->

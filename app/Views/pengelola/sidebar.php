@@ -16,10 +16,10 @@
                     </a>
                 </li>
 
-<!--                 <li>
+                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="users"></i>
-                        <span data-key="t-authentication"><?= lang('Files.User') ?></span>
+                        <span data-key="t-authentication">User</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
@@ -33,24 +33,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?=base_url()?>/pengelola/cs/list" data-key="t-user-grid">
-                                <span data-key="t-authentication">Customer Service</span>
-                            </a>
-                        </li>
-        
-                        <li>
-                            <a href="<?=base_url()?>/pengelola/designer/list" data-key="t-user-grid">
-                                <span data-key="t-authentication">Designer</span>
-                            </a>
-                        </li>  
-                        <li>
                             <a href="<?=base_url()?>/pengelola/umkm/list" data-key="t-user-grid">
                                 <span data-key="t-authentication">UMKM</span>
                             </a>
                         </li>   
                     </ul>
                 </li>
-
+<!--
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="dollar-sign"></i>

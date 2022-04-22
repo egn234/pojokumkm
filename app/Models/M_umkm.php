@@ -23,12 +23,27 @@
     function __construct(){
       $this->db = db_connect();
     }
-  
-    public function getAllPengelola(){
-      $sql = "SELECT * FROM tb_umkm JOIN tb_user USING (iduser)";
+   
+    public function getAllUmkm(){
+      $sql = "SELECT * FROM tb_user JOIN tb_umkm USING (iduser)";
+      return $this->db->query($sql)->getResult();
+    }
+    
+    public function getJoinUserUmkm($iduser){
+      $sql = "SELECT * FROM tb_user JOIN tb_umkm USING(iduser) WHERE iduser = $iduser";
       return $this->db->query($sql)->getResult();
     }
 
+    public function insertUmkm($data){
+      $builder = $this->db->table('tb_umkm');
+      $builder->insert($data);
+    }
+
+    public function updateUmkm($dataset, $iduser){
+      $builder = $this->db->table('tb_umkm');
+      $builder->where('iduser', $iduser);
+      $builder->update($dataset);
+    }
   }
 
 ?>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?$title_meta?>
+    <?=$title_meta?>
     <?=$this->include('homepage_partial/head-css') ?>
 </head>
 
