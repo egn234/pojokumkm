@@ -10,18 +10,18 @@
 			$this->m_pengelola = new M_pengelola();
 		}
 		
-		// public function newUser(){
-	 //    $iduser = session()->get('iduser');
-	 //    $is_new = $this->m_pengelola->countPengelolaByIdUser($iduser)[0]->hitung;
+		public function newUser(){
+	    $iduser = session()->get('iduser');
+	    $is_new = $this->m_pengelola->countPengelolaByIdUser($iduser)[0]->hitung;
 
-  //   	if ($is_new == 0){
-  //   		echo "<script>alert('Isi data diri terlebih dahulu'); window.location.href = '".base_url()."/pengelola/profile/add';</script>";
-  //   		exit;
-  //   	}
-		// }
+    	if ($is_new == 0){
+    		echo "<script>alert('Isi data diri terlebih dahulu'); window.location.href = '".base_url()."/pengelola/profile/add';</script>";
+    		exit;
+    	}
+		}
 
 		public function index(){
-			// $this->newUser();
+			$this->newUser();
 	    $iduser = session()->get('iduser');
 			$detilUser = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
 
