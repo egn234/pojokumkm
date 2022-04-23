@@ -34,9 +34,34 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getLinkUmkmByIdUmkm($idumkm){
+      $sql = "SELECT * FROM tb_umkm_link WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countUmkmByIdUser($iduser){
+      $sql = "SELECT count(idumkm) as hitung FROM tb_umkm WHERE iduser = $iduser";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countLinkUmkmByIdUmkm($idumkm){
+      $sql = "SELECT count(idumkmlink) AS hitung FROM tb_umkm_link WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function insertUmkm($data){
       $builder = $this->db->table('tb_umkm');
       $builder->insert($data);
+    }
+
+    public function insertLinkUmkm($data){
+      $builder = $this->db->table('tb_umkm_link');
+      $builder->insert($data);
+    }
+
+    public function deleteLinkUmkm($idumkmlink){
+      $sql = "DELETE FROM tb_umkm_link WHERE idumkmlink = $idumkmlink";
+      return $this->db->query($sql);
     }
 
     public function updateUmkm($dataset, $iduser){

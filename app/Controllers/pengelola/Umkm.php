@@ -123,9 +123,10 @@
 			if ($email != $old_email) {
 				$cekEmail = $this->m_user->cekEmailTerdaftar($email, $iduser)[0]->hitung;
 				if ($cekEmail > 0) {
-					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						Email telah terdaftar
-					</div>';
+					$alert = view('partials/notification-alert', 
+						['notif_text' => 'Email telah terdaftar',
+						 'status' => 'warning']
+						);
 					session()->setFlashdata('notif', $alert);
 					return redirect()->to(base_url('pengelola/umkm/detail/'.$iduser));
 				}

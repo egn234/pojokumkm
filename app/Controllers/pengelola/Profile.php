@@ -118,8 +118,6 @@
 		}
 
 		public function update_pass($iduser){
-			$this->newUser();
-
 			$iduser2 = session()->get('iduser');
 
 			if ($iduser2 != $iduser) {

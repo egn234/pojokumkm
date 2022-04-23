@@ -53,8 +53,7 @@ class auth extends BaseController{
 						echo session()->get('username');
 					}
 					elseif($user->idgroup == 2){
-						// return redirect()->to(base_url('umkm/dashboard'));
-						echo "UMKM WOHOO";
+						return redirect()->to(base_url('umkm/dashboard'));
 					}
 				}
 
