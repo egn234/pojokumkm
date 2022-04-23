@@ -33,6 +33,17 @@
       $sql = "SELECT * FROM tb_user JOIN tb_pengelola USING(iduser) WHERE iduser = $iduser";
       return $this->db->query($sql)->getResult();
     }
+
+    public function insertPengelola($data){
+      $builder = $this->db->table('tb_pengelola');
+      $builder->insert($data);
+    }
+
+    public function updatePengelola($dataset, $iduser){
+      $builder = $this->db->table('tb_pengelola');
+      $builder->where('iduser', $iduser);
+      $builder->update($dataset);
+    }
   }
 
 ?>

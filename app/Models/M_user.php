@@ -63,9 +63,23 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function updateEmail($email, $iduser){
+      $builder = $this->db->table('tb_user');
+      $builder->set('email', $email);
+      $builder->where('iduser', $iduser);
+      $builder->update();
+    }
+
     public function insertUser($data){
       $builder = $this->db->table('tb_user');
       $builder->insert($data);
+    }
+
+    public function updatePassword($pass, $iduser){
+      $builder = $this->db->table('tb_user');
+      $builder->set('pass', $pass);
+      $builder->where('iduser', $iduser);
+      $builder->update();
     }
 
     public function aktifkanUser($iduser){
