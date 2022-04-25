@@ -5,6 +5,7 @@
 	use App\Models\M_pengelola;
 	use App\Models\M_user;
 	use App\Models\M_kategori;
+	use App\Models\M_produk;
 	use CodeIgniter\Files\File;
 
 	class Kategori extends \App\Controllers\BaseController{
@@ -13,6 +14,7 @@
 			$this->m_pengelola = new M_pengelola();
 			$this->m_user = new M_user();
 			$this->m_kategori = new M_kategori();
+			$this->m_produk = new M_produk();
 			$this->request = \Config\Services::request();
 		}
 
@@ -81,6 +83,45 @@
 			return redirect()->to(base_url('pengelola/kategori/list'));
 		}
 
+		public function edit($idkategori){
+			$this->newUser();
+	    $iduser = session()->get('iduser');
+			$idpengelola = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->idpengelola;
+			
+			$data = [];
+
+			$category_name = $_POST['category_name'];
+			$category_description = $_POST['category_description'];
+
+			$old_name = $this->m_kategori->getKategoriById($idkategori)[0]->category_name;
+			
+			if ($old_name != $category_name) {
+				
+				$cek_tag = $this->m_kategori->countKategoriByName($category_name)[0]->hitung;
+				
+				if ($cek_tag != 0) {
+					$alert = view('partials/notification-alert', 
+						['notif_text' => 'Kategori sudah terdaftar',
+						 'status' => 'warning']
+						);
+					session()->setFlashdata('notif', $alert);
+					return redirect()->to(base_url('pengelola/kategori/list'));
+				}
+				
+				$data += ['category_name' => $category_name];
+			}
+
+			$data += ['category_description' => $category_description];
+
+			$this->m_kategori->updateKategori($data, $idkategori);
+			$alert = view('partials/notification-alert', 
+				['notif_text' => 'Kategori berhasil diubah',
+				 'status' => 'success']
+				);
+			session()->setFlashdata('notif', $alert);
+			return redirect()->to(base_url('pengelola/kategori/list'));
+		}
+
 		public function flag_switch($idkategori){
 			$category_status = $this->m_kategori->getKategoriById($idkategori)[0]->category_status;
 
@@ -107,6 +148,12 @@
 		}
 
 		public function del_kat($idkategori){
+			$cek = $this->m_produk->countProdukByIdKategori($a->idkategori)[0]->hitung;
+
+			if ($cek != 0) {
+    		echo "<script>alert('restricted'); window.location.href = '".base_url()."/pengelola/kategori/list';</script>";
+    		exit;
+			}
 
 			$this->m_kategori->deleteKategori($idkategori);
 
@@ -117,6 +164,15 @@
 
 			session()->setFlashdata('notif', $alert);
 			return redirect()->to(base_url('pengelola/kategori/list/'));
+		}
+
+		public function konfirEdit(){
+			if ($_POST['rowid']) {
+				$id = $_POST['rowid'];
+				$kat = $this->m_kategori->getKategoriById($id)[0];
+				$data = ['a' => $kat];
+				echo view('pengelola/kat/part-kat-mod-edit', $data);
+			}
 		}
 
 		public function konfirSwitch(){

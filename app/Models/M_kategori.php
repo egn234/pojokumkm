@@ -63,5 +63,10 @@
       return $this->db->query($sql);
     }
 
+    public function updateKategori($dataset, $idkategori){
+      $builder = $this->db->table('tb_kategori');
+      $builder->where('idkategori', $idkategori);
+      $builder->update($dataset);
+    }
   }
 ?>

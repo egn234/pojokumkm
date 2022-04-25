@@ -106,6 +106,7 @@
                                             <td>
                                                 <div class="d-grid gap-2">
                                                     <div class="btn-group">
+                                                        <a class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#editConfirm" data-id="<?=$a->idkategori?>">Edit</a>
                                                         <?php if($hitung == 0){?>
                                                         <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delConfirm" data-id="<?=$a->idkategori?>">Hapus</a>
                                                         <?php }?>
@@ -151,7 +152,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah User Pengelola</h5>
+                <h5 class="modal-title" id="myModalLabel">Tambah Kategori</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -172,6 +173,14 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="editConfirm" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <span class="fetched-data"></span>
+        </div>
+    </div>
 </div><!-- /.modal -->
 
 <div id="delConfirm" class="modal fade" tabindex="-1">
@@ -203,6 +212,17 @@
 <script type="text/javascript">
     $('.dtable').DataTable();
     $(document).ready(function() {
+        $('#editConfirm').on('show.bs.modal', function(e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url() ?>/pengelola/kategori/konfirEdit',
+                data: 'rowid=' + rowid,
+                success: function(data) {
+                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
+                }
+            });
+        });
         $('#delConfirm').on('show.bs.modal', function(e) {
             var rowid = $(e.relatedTarget).data('id');
             $.ajax({
