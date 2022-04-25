@@ -39,6 +39,18 @@
                         </li>   
                     </ul>
                 </li>
+                <li>
+                    <a href="<?=base_url()?>/pengelola/produk/list">
+                        <i data-feather="box"></i>
+                        <span data-key="t-produk">Produk</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=base_url()?>/pengelola/kategori/list">
+                        <i data-feather="tag"></i>
+                        <span data-key="t-kategori">Kategori Produk</span>
+                    </a>
+                </li>
 <!--
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
