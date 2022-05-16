@@ -63,12 +63,12 @@
                                         Tambah Produk
                                     </a>
                                 </div>
-                                <table class="table dtable align-middle dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;">
+                                <table class="table dtable table-striped table-bordered align-middle nowrap">
                                     <thead>
                                         <th>No.</th>
                                         <th>Nama Produk</th>
                                         <th>Deskripsi</th>
-                                        <th>Status</th>
+                                        <th>Kategori</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
@@ -76,16 +76,7 @@
                                         <?php foreach ($l_produk as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td>
-                                            <?php if($a->idgrouporder == 1){?>
-                                                Desain Logo
-                                            <?php }elseif($a->idgrouporder == 2){?>
-                                                Desain Kemasan
-                                            <?php }elseif($a->idgrouporder == 3){?>
-                                                Desain Logo & Kemasan
-                                            <?php }?>
-                                            </td>
-                                            <td><?=$a->orderdate?></td>
+                                            <td><?=$a->product_name?></td>
                                             <td>
                                                 <?php 
                                                 $trimmed = explode("</p><p>", $a->description);
@@ -98,6 +89,15 @@
                                                 }
                                                 ?>
                                             </td>
+                                            <td><?=$a->category_name?></td>
+                                            <td>
+                                                <div class="d-grid gap-2">
+                                                    <a href="<?=base_url()?>/umkm/produk/detail/<?=$a->idproduk?>" class="btn btn-outline-info">Detail</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php $c ++?>
+                                        <?php }?>
                                     </tbody>
                                 </table>
 

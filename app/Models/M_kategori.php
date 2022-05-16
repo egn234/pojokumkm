@@ -34,6 +34,11 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getKategoriAktif(){
+      $sql = "SELECT * FROM tb_kategori WHERE category_status = 'on'"; 
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countKategoriByName($category_name){
       $sql = "SELECT count(idkategori) AS hitung FROM tb_kategori WHERE BINARY category_name = '$category_name'";
       return $this->db->query($sql)->getResult();

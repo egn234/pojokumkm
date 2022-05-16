@@ -128,5 +128,5 @@ nb-configuration.xml
 
 # WEB DATA STUFF
 
-public/webdata/*
+public/uploads/*
 writable/*
