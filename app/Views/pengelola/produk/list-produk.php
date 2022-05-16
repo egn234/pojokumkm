@@ -58,16 +58,12 @@
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <div style="margin-bottom: 15px">
-                                    <a href="<?=base_url()?>/umkm/produk/add" type="button" class="btn btn-info">
-                                        Tambah Produk
-                                    </a>
-                                </div>
-                                <table class="table dtable align-middle dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;">
+                                <table class="table dtable table-striped table-sm table-bordered align-middle nowrap">
                                     <thead>
                                         <th>No.</th>
                                         <th>Nama Produk</th>
-                                        <th>Deskripsi</th>
+                                        <th>Penjual</th>
+                                        <th>Kategori</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </thead>
@@ -76,36 +72,24 @@
                                         <?php foreach ($l_produk as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
+                                            <td><?=$a->product_name?></td>
+                                            <td><?=$a->umkm_name?></td>
+                                            <td><?=$a->category_name?></td>
                                             <td>
-                                            <?php if($a->idgrouporder == 1){?>
-                                                Desain Logo
-                                            <?php }elseif($a->idgrouporder == 2){?>
-                                                Desain Kemasan
-                                            <?php }elseif($a->idgrouporder == 3){?>
-                                                Desain Logo & Kemasan
-                                            <?php }?>
-                                            </td>
-                                            <td><?=$a->orderdate?></td>
-                                            <td>
-                                                <?php 
-                                                $trimmed = explode("</p><p>", $a->description);
-                                                $countDesc = count(explode(" ", $trimmed[0]));
-                                                if ($countDesc > 12) {
-                                                  $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
-                                                  echo implode(" ", $slice)."....";
-                                                } else {
-                                                  echo $trimmed[0];
-                                                }
-                                                ?>
+                                                <?php if($a->product_status == 'on'){?>
+                                                    Aktif
+                                                <?php }else{?>
+                                                    Tidak Aktif
+                                                <?php }?>
                                             </td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <a href="<?=base_url()?>/umkm/pesanan/detail/<?=$a->idorder?>" class="btn btn-outline-info">Detail</a>
+                                                    <a href="<?=base_url()?>/pengelola/produk/detail/<?=$a->idproduk?>" class="btn btn-outline-info btn-sm">Detail</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php $c = $c+1; ?>
-                                        <?php } ?>
+                                        <?php $c ++?>
+                                        <?php }?>
                                     </tbody>
                                 </table>
 
@@ -117,7 +101,6 @@
             </div> <!-- container-fluid -->
         </div>
         <!-- End Page-content -->
-
 
         <?= $this->include('partials/footer') ?>
     </div>

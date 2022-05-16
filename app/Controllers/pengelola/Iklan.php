@@ -4,15 +4,13 @@
 	use App\Controllers\BaseController;
 	use App\Models\M_pengelola;
 	use App\Models\M_user;
-	use App\Models\M_produk;
 	use CodeIgniter\Files\File;
 
-	class Produk extends \App\Controllers\BaseController{
+	class Iklan extends \App\Controllers\BaseController{
 
 		function __construct(){
 			$this->m_pengelola = new M_pengelola();
 			$this->m_user = new M_user();
-			$this->m_produk = new M_produk();
 			$this->request = \Config\Services::request();
 		}
 
@@ -35,32 +33,15 @@
 	    $iduser = session()->get('iduser');
 			$idpengelola = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->idpengelola;
 
-			$l_produk = $this->m_produk->getAllProduk();
+			$l_iklan = $this->m_produk->getAllProduk();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
 
 			$data = [
-				'title_meta' => view('partials/title-meta', ['title' => 'List Produk']),
-				'l_produk' => $l_produk,
+				'title_meta' => view('partials/title-meta', ['title' => 'List Paket Iklan']),
+				'l_iklan' => $l_iklan,
 				'detail_user' => $detilUser
 			];
 			
-			return view('pengelola/produk/list-produk', $data);
-		}
-
-		public function detail($idproduk){
-			$this->newUser();
-	    $iduser = session()->get('iduser');
-			$idpengelola = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->idpengelola;
-
-			$l_detail = $this->m_produk->getProdukById($idproduk)[0];
-			$detilUser = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
-
-			$data = [
-				'title_meta' => view('partials/title-meta', ['title' => 'Detail Produk']),
-				'l_detail' => $l_detail,
-				'detail_user' => $detilUser
-			];
-
-			return view('pengelola/produk/detail-produk', $data);
+			return view('pengelola/prod/list-produk', $data);
 		}
 	}
