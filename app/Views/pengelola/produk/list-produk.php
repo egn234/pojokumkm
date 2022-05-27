@@ -40,7 +40,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PojokUMKM</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PojokUMKM</a></li>
                                     <li class="breadcrumb-item active">List Produk</li>
                                 </ol>
                             </div>
@@ -57,6 +57,11 @@
                                 <p class="card-title-desc">List Produk Terdaftar</p>
                             </div>
                             <div class="card-body">
+                                <div style="margin-bottom: 15px">
+                                    <a href="<?=base_url()?>/pengelola/produk/add" type="button" class="btn btn-info">
+                                        Tambah Produk
+                                    </a>
+                                </div>
                                 <?=session()->getFlashdata('notif');?>
                                 <table class="table dtable table-striped table-sm table-bordered align-middle nowrap">
                                     <thead>

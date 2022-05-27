@@ -105,6 +105,11 @@
       $builder->update($dataset);
     }
 
+    public function deleteProdukByIdProduk($idproduk){
+      $sql = "DELETE FROM tb_produk WHERE idproduk = $idproduk";
+      return $this->db->query($sql);
+    }
+
     public function insertProdukLink($data){
       $builder = $this->db->table('tb_produk_link');
       $builder->insert($data);
@@ -112,6 +117,11 @@
 
     public function deleteLinkProduk($idprodlink){
       $sql = "DELETE FROM tb_produk_link WHERE idprodlink = $idprodlink";
+      return $this->db->query($sql);
+    }
+
+    public function deleteLinkProdukByIdProduk($idproduk){
+      $sql = "DELETE FROM tb_produk_link WHERE idproduk = $idproduk";
       return $this->db->query($sql);
     }
   }

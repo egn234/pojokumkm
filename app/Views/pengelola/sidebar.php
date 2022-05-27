@@ -51,6 +51,12 @@
                         <span data-key="t-kategori">Kategori Produk</span>
                     </a>
                 </li>
+                <li>
+                    <a href="<?=base_url()?>/pengelola/iklan/list">
+                        <i data-feather="dollar-sign"></i>
+                        <span data-key="t-kategori">Paket Iklan</span>
+                    </a>
+                </li>
 <!--
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">

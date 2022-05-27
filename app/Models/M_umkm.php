@@ -29,6 +29,11 @@
       return $this->db->query($sql)->getResult();
     }
     
+    public function getUmkmByIdUmkm($idumkm){
+      $sql = "SELECT * FROM tb_user JOIN tb_umkm USING(iduser) WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+    
     public function getJoinUserUmkm($iduser){
       $sql = "SELECT * FROM tb_user JOIN tb_umkm USING(iduser) WHERE iduser = $iduser";
       return $this->db->query($sql)->getResult();

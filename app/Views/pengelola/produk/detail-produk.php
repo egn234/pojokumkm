@@ -53,8 +53,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/produk/list">List Produk</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/produk/list">List Produk</a></li>
                                     <li class="breadcrumb-item active">Detail Produk</li>
                                 </ol>
                             </div>
@@ -125,16 +125,35 @@
                                     <div class="col-sm-auto order-1 order-sm-2">
                                         <div class="d-flex align-items-start justify-content-end gap-2">
                                             <div>
-                                                <a href="<?=base_url()?>/umkm/produk/edit/<?=$l_detail->idproduk?>" class="btn btn-soft-info"><i class="fa fa-edit"></i> Ubah Info Produk</a>
+                                                <a href="<?=base_url()?>/pengelola/produk/edit/<?=$l_detail->idproduk?>" class="btn btn-soft-info"><i class="fa fa-edit"></i> Ubah Info Produk</a>
                                             </div>
                                             <div>
-                                                <button type="button" class="btn btn-soft-danger"><i class="fa fa-trash"></i> Hapus</button>
+                                                <button type="button" class="btn btn-soft-danger" data-bs-toggle="modal" data-bs-target="#delProduk"><i class="fa fa-trash"></i> Hapus</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
+                                <div class="pb-1">
+                                    <div class="row">
+                                        <div class="col-xl-3">
+                                            <div>
+                                                <h5 class="font-size-15">Penjual :</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl">
+                                            <div class="text-muted">
+                                                <u>
+                                                    <a href="<?=base_url()?>/pengelola/produk/det_umkm/<?=$l_detail->idumkm?>">
+                                                        <?=$l_detail->umkm_name?>
+                                                    </a>
+                                                </u>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="pb-1">
                                     <div class="row">
                                         <div class="col-xl-3">
@@ -182,7 +201,7 @@
                                                             <?=$li->link_name?> <i class="fa fa-external-link-alt"></i>
                                                         </a>
                                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <a href="<?=base_url()?>/umkm/produk/del_link/<?=$l_detail->idproduk?>/<?=$li->idprodlink?>">
+                                                        <a href="<?=base_url()?>/pengelola/produk/del_link/<?=$l_detail->idproduk?>/<?=$li->idprodlink?>">
                                                             <span class="fa fa-trash text-danger"></span>
                                                         </a>
                                                     </li>
@@ -238,7 +257,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="konfirAdd" action="<?=base_url()?>/umkm/produk/add_link/<?=$l_detail->idproduk?>" method="post">
+                <form id="konfirAdd" action="<?=base_url()?>/pengelola/produk/add_link/<?=$l_detail->idproduk?>" method="post">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-3">
@@ -262,6 +281,25 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
                 <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- sample modal content -->
+<div id="delProduk" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tambah Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                PERHATIAN: Apakah anda ingin menghapus produk ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/pengelola/produk/del_proc/<?=$l_detail->idproduk?>" class="btn btn-danger">Hapus</a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
