@@ -21,7 +21,7 @@ class Produk extends BaseController
 		$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
 
 		if (isset($_GET['search']) || isset($_GET['kategori'])) {
-			$keyword = (isset($_GET['search'])) ? ["product_name LIKE '%$search[0]%'"] : "";
+			$keyword = ["product_name LIKE '%$search[0]%'"];
 			//LOOP BUAT CARI NAMA PRODUK
 			for ($i = 1; $i < count($search); $i++) {
 				array_push($keyword, "OR product_name LIKE '%$search[$i]%' ");
@@ -38,9 +38,7 @@ class Produk extends BaseController
 			$limit = 12;
 			$limitStart = ($page - 1) * $limit;
 			$allProduk = count($this->m_produk->getAllproduk());
-
 			$jumlahPage = ceil($allProduk / $limit);
-			print_r($jumlahPage);
 			$l_produk = $this->m_produk->getHomeProduct($limit, $limitStart, $search, $query);
 		} else {
 			$allProduk = count($this->m_produk->getAllproduk());
@@ -52,11 +50,13 @@ class Produk extends BaseController
 			$limitStart = ($page - 1) * $limit;
 			$l_produk = $this->m_produk->getHomeProduct($limit, $limitStart);
 		}
+		$getAllkategori = $this->m_kategori->getAllKategori();
 		$data = [
 			'title_meta' => view('homepage_partial/title-meta', ['title' => 'Grid Produk']),
 			'l_produk' => $l_produk,
 			'l_page' => $page,
-			'jumlahPage' => $jumlahPage
+			'jumlahPage' => $jumlahPage,
+			'kategori' => $getAllkategori
 		];
 		return view('search-page', $data);
 	}

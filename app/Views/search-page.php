@@ -61,26 +61,16 @@
                                         <hr>
                                         <span class="sidebar-widget-title--sm">Category</span>
                                         <!-- Category -->
-                                        <div class="custom-control custom-checkbox mb-2">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck10" value="UMKM" name="kategori[]">
-                                            <label class="custom-control-label w-100" for="customCheck10">UMKM<span class="badge badge-light float-right"></span></label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-2">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck11" value="ElektronikArts" name="kategori[]">
-                                            <label class="custom-control-label w-100" for="customCheck11">Elektronik Arts<span class="badge badge-light float-right"></span></label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-2">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck12">
-                                            <label class="custom-control-label w-100" for="customCheck12">eCommerce<span class="badge badge-light float-right"></span></label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-2">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck13">
-                                            <label class="custom-control-label w-100" for="customCheck13">Magento <span class="badge badge-light float-right"></span></label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-2">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck14">
-                                            <label class="custom-control-label w-100" for="customCheck14">UI kits <span class="badge badge-light float-right"></span></label>
-                                        </div>
+                                        <?php
+                                        $i = 0;
+                                        foreach ($kategori as $val) {
+                                        ?>
+                                            <div class="custom-control custom-checkbox mb-2">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]">
+                                                <label class="custom-control-label w-100" for="customCheck<?= $i ?>"><?= $val->category_name ?><span class="badge badge-light float-right"></span></label>
+                                            </div>
+                                        <?php $i++;
+                                        } ?>
                                     </form>
                                 </div>
                             </div>
