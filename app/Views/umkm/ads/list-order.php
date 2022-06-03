@@ -22,7 +22,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('pengelola/menu') ?>
+    <?= $this->include('umkm/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -40,8 +40,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PojokUMKM</a></li>
-                                    <li class="breadcrumb-item active">List Paket Iklan</li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PojokUMKM</a></li>
+                                    <li class="breadcrumb-item active">List Voucher Iklan</li>
                                 </ol>
                             </div>
 
@@ -54,42 +54,34 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">List Paket Iklan yang terdaftar</p>
+                                <p class="card-title-desc">List Voucher Iklan yang dimiliki</p>
                             </div>
                             <div class="card-body">
+                                <?=session()->getFlashdata('notif');?>
                                 <div style="margin-bottom: 15px">
-                                    <a href="<?=base_url()?>/pengelola/iklan/add" type="button" class="btn btn-info">
-                                        Tambah Paket Iklan
+                                    <a href="<?=base_url()?>/umkm/iklan/order" type="button" class="btn btn-info">
+                                        Pesan Voucher Iklan
                                     </a>
                                 </div>
-                                <?=session()->getFlashdata('notif');?>
-                                <table class="table dtable table-striped table-sm table-bordered align-middle nowrap">
+                                <table class="table dtable table-striped table-bordered align-middle nowrap">
                                     <thead>
                                         <th>No.</th>
                                         <th>Paket Iklan</th>
                                         <th>Durasi</th>
-                                        <th>Harga</th>
-                                        <th>Status</th>
+                                        <th>Jumlah</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_iklan as $a) {?>
+                                        <?php foreach ($l_voucher as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
                                             <td><?=$a->ads_name?></td>
-                                            <td><?=$a->ads_duration?> Hari</td>
-                                            <td align="right">Rp <?=number_format($a->ads_price, 0, ',', '.')?></td>
-                                            <td>
-                                                <?php if($a->ads_status == 'on'){?>
-                                                    Aktif
-                                                <?php }else{?>
-                                                    Tidak Aktif
-                                                <?php }?>
-                                            </td>
+                                            <td><?=$a->ads_duration?></td>
+                                            <td><?=$a->ads_amount?></td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <a href="<?=base_url()?>/pengelola/iklan/detail/<?=$a->idads?>" class="btn btn-outline-info btn-sm">Detail</a>
+                                                    <a href="<?=base_url()?>/umkm/produk/detail/<?=$a->idproduk?>" class="btn btn-outline-info">Detail</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -107,6 +99,7 @@
         </div>
         <!-- End Page-content -->
 
+
         <?= $this->include('partials/footer') ?>
     </div>
     <!-- end main content-->
@@ -114,7 +107,7 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?= $this->include('pengelola/right-sidebar') ?>
+<?= $this->include('umkm/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>

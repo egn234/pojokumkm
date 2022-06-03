@@ -45,7 +45,7 @@
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/iklan/list">List Iklan</a></li>
-                                    <li class="breadcrumb-item active">Detail Produk</li>
+                                    <li class="breadcrumb-item active">Detail Iklan</li>
                                 </ol>
                             </div>
 
@@ -105,7 +105,7 @@
                                         </div>
                                         <div class="col-xl">
                                             <div class="text-muted">
-                                                <?=$l_detail->ads_duration?>
+                                                <?=$l_detail->ads_duration?> Hari
                                             </div>
                                         </div>
                                     </div>
@@ -172,44 +172,6 @@
 
 </div>
 <!-- END layout-wrapper -->
-
-<!-- sample modal content -->
-<div id="addLink" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah Link</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="konfirAdd" action="<?=base_url()?>/pengelola/produk/add_link/<?=$l_detail->idads?>" method="post">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="mb-3">
-                                <label class="form-label">Nama Link</label>
-                                <div class="col-sm-12">
-                                    <input type="text" name="link_name" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="mb-3">
-                                <label class="form-label">Link Produk</label>
-                                <div class="col-sm-12">
-                                    <input type="text" name="product_link" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <!-- sample modal content -->
 <div id="switchIklan" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">

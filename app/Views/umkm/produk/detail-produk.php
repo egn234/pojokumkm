@@ -214,6 +214,25 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm order-2 order-sm-1">
+                                        <h4 class="card-title">Status Iklan & Promote</h4>
+                                    </div>
+                                    <div class="col-sm-auto order-1 order-sm-2">
+                                        <div class="d-flex align-items-start justify-content-end gap-2">
+                                            <div>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#setAds" class="btn btn-soft-success">
+                                                    Iklankan Produk Ini!
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
                     </div>
                 </div> <!-- end row -->
 

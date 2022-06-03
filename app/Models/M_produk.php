@@ -76,6 +76,35 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getHomeProduct(){
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          LEFT JOIN tb_kategori USING (idkategori)
+          WHERE product_status = 'on'
+          ORDER BY idproduk DESC LIMIT 4";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getHomeProductRand($idkategori){
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE idkategori = $idkategori
+        AND product_status = 'on'
+        ORDER BY idproduk DESC LIMIT 4";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countProdukByIdKategori($idkategori){
       $sql = "SELECT count(idproduk) AS hitung FROM tb_produk 
         RIGHT JOIN tb_kategori USING (idkategori)

@@ -55,6 +55,14 @@
       $builder->where('idads', $idads);
       $builder->update();
     }
+
+    public function getVoucherByUmkm($idumkm){
+      $sql = "SELECT * FROM tb_user JOIN tb_umkm USING (iduser) 
+        RIGHT JOIN tr_umkm_ads_owned USING (idumkm)
+        LEFT JOIN tb_ads USING (idads)
+        WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
   }
 
 ?>
