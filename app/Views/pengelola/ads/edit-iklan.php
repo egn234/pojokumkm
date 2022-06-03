@@ -131,11 +131,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Tambah Iklan?
+                Ubah Iklan?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="editIklan" class="btn btn-primary">Tambah</button>
+                <button type="submit" form="editIklan" class="btn btn-primary">Ubah</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

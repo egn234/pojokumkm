@@ -124,7 +124,7 @@
 			}
 
 			$ads_description = $_POST['ads_description'];
-			$ads_duration = $_POST['duration'];
+			$ads_duration = $_POST['duration1'];
 			$ads_price = $_POST['ads_price'];
 
 			$dataset = [
