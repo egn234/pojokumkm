@@ -81,24 +81,24 @@
                             <section class="my-5">
                                 <div class="row mb-4 d-flex justify-content-between">
                                     <div class="col-md-8">
-                                        <h6 class="mb-2">Exclusive Icons &amp; Illustrations</h6>
-                                        <p>Checkout our latest themes, templates and illustrations.</p>
+                                        <h6 class="mb-2">Produk-produk ekslusif dari <?=$l_detail->umkm_name?></h6>
+                                        <p>Produk pada toko yang sama</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="#" class="btn btn-link float-right">Explore all → </a>
+                                        <a href="#" class="btn btn-link float-right">Lihat Toko → </a>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                <?php foreach ($see_also as $lp) { ?>
+                                    <div class="col-md-4">
                                         <div class="card item-card h-100 border-0">
                                             <div class="item-card__image rounded">
-                                                <a href="single-product.html">
-                                                    <img src="assets/img/520x400.png" class="img-fluid rounded" alt="">
+                                                <a href="produk/id/<?= $lp->idproduk ?>" class="swap-link">
+                                                    <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $lp->iduser ?>/prd/<?= $lp->product_main_pic ?>" class="img-fluid rounded" alt="">
                                                 </a>
                                                 <div class="hover-icons">
                                                     <ul class="list-unstyled">
-                                                        <li><a href="single-product.html" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="left" title="Bookmark"><i class="lar la-bookmark"></i></a></li>
+                                                        <li><a href=""><i class="las la-desktop"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -107,45 +107,7 @@
                                                 <div class="d-flex justify-content-between align-items-start">
                                                     <div class="item-title">
                                                         <a href="#">
-                                                            <h3 class="h5 mb-0 text-truncate">Mockup Bundle Vol 3</h3>
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <span>$14</span>
-                                                    </div>
-                                                </div>
-                                                <!-- end: Card info -->
-                                                <div class="d-flex justify-content-between align-items-center item-meta">
-                                                    <div class="short-description mb-0">
-                                                        <p class="mb-0 extension-text"><a href="#">UI Kit</a><span class="ml-1">in</span> <a href="#">Corporate</a> </p>
-                                                    </div>
-                                                </div>
-                                                <!-- end: Card meta -->
-                                            </div>
-                                            <!-- edn:Card body -->
-                                        </div>
-                                        <!-- end: Card -->
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="card item-card h-100 border-0">
-                                            <div class="item-card__image rounded">
-                                                <a href="single-product.html" class="swap-link">
-                                                    <img src="assets/img/520x400.png" class="img-fluid rounded" alt="">
-                                                </a>
-                                                <div class="hover-icons">
-                                                    <ul class="list-unstyled">
-                                                        <li><a href="single-product.html"><i class="las la-desktop"></i></a></li>
-                                                        <li><a href="#"><i class="lar la-bookmark"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- end: Item card image -->
-                                            <div class="card-body px-0 pt-3">
-                                                <div class="d-flex justify-content-between align-items-start">
-                                                    <div class="item-title">
-                                                        <a href="#">
-                                                            <h3 class="h5 mb-0 text-truncate">Font Bundle 99% OFF</h3>
+                                                            <h3 class="h5 mb-0 text-truncate"><?= $lp->product_name ?></h3>
                                                         </a>
                                                     </div>
                                                     <div class="item-price">
@@ -155,7 +117,7 @@
                                                 <!-- end: Card info -->
                                                 <div class="d-flex justify-content-start align-items-center item-meta">
                                                     <div class="short-description mb-0">
-                                                        <p class="mb-0 extension-text"><a href="#">WordPress</a><span class="ml-1">in</span> <a href="#">Creative</a> </p>
+                                                        <p class="mb-0 extension-text"><a href="#"><?= $lp->category_name ?></a><span class="ml-1">di</span> <a href="#"><?= $lp->umkm_name ?></a> </p>
                                                     </div>
                                                 </div>
                                                 <!-- end: Card meta -->
@@ -164,44 +126,8 @@
                                         </div>
                                         <!-- end: Card -->
                                     </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="card item-card h-100 border-0">
-                                            <div class="item-card__image rounded">
-                                                <a href="single-product.html" class="swap-link">
-                                                    <img src="assets/img/520x400.png" class="img-fluid rounded" alt="">
-                                                </a>
-                                                <div class="hover-icons">
-                                                    <ul class="list-unstyled">
-                                                        <li><a href="single-product.html"><i class="las la-desktop"></i></a></li>
-                                                        <li><a href="#"><i class="lar la-bookmark"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- end: Item card image -->
-                                            <div class="card-body px-0 pt-3">
-                                                <div class="d-flex justify-content-between align-items-start">
-                                                    <div class="item-title">
-                                                        <a href="#">
-                                                            <h3 class="h5 mb-0 text-truncate">Retro Font</h3>
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <span>$14</span>
-                                                    </div>
-                                                </div>
-                                                <!-- end: Card info -->
-                                                <div class="d-flex justify-content-start align-items-center item-meta">
-                                                    <div class="short-description mb-0">
-                                                        <p class="mb-0 extension-text"><a href="#">HTML</a><span class="ml-1">in</span> <a href="#">Landing page</a> </p>
-                                                    </div>
-                                                </div>
-                                                <!-- end: Card meta -->
-                                            </div>
-                                            <!-- edn:Card body -->
-                                        </div>
-                                        <!-- end: Card -->
-                                    </div>
+                                    <!-- end: col -->
+                                <?php } ?>
                                 </div>
                             </section>
                         </div>
@@ -210,87 +136,23 @@
                             <div class="sidebar sticky-lg-top sticky-md-top">
                                 <div class="sidebar-widget">
                                     <h3 class="mb-4"><?=$l_detail->product_name?></h3>
-                                    <div class="row d-flex justify-content-between align-items-center">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <select id="inputState" class="form-control">
-                                                    <option selected="">Regular licence</option>
-                                                    <option>Extended licence</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    <hr />
 
-                                        <div class="col-md-4">
-                                            <div class="form-group text-md-right text-sm-center">
-                                                <h2 class="item-widget-price">$28</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex justify-content-between align-items-center">
-                                        <div class="col-12">
-                                            <div class="custom-control custom-radio mt-3 mb-2 d-flex justify-content-between align-items-center">
-                                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
-                                                <label class="custom-control-label" for="customRadio1">Install Theme</label>
-                                                <div class="label-price">$15</div>
+                                    <span class="sidebar-widget-title--sm">Link Produk</span>
+                                    <ul class="list-unstyled">
+                                        <?php foreach($l_link as $li){?>
+                                        <li>
+                                            <a href="<?=prep_url($li->link_address)?>" target="_blank">
+                                                <?=$li->link_name?> <i class="fa fa-external-link-alt"></i>
+                                            </a>
+                                        </li>
+                                        <?php }?>
+                                    </ul>
+                                    <hr />
 
-                                            </div>
-                                            <div class="custom-control custom-radio mb-4 d-flex justify-content-between align-items-center">
-                                                <input type="radio" checked="" id="customRadio2" name="customRadio" class="custom-control-input" />
-                                                <label class="custom-control-label" for="customRadio2">+1 year Support</label>
-                                                <div class="label-price">$49</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-block" type="button">
-                                        Purchase → <span class="price"> $77</span>
-                                    </button>
-                                </div>
-
-                                <div class="sidebar-widget">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span class="sidebar-widget-title--sm">Link Produk</span>
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    25 Illustrations
-                                                </li>
-                                                <li>
-                                                    Bright & Modern Style
-                                                </li>
-                                                <li>
-                                                    AI, SVG, PNG Sources
-                                                </li>
-                                            </ul>
-                                            <hr />
-
-                                            <span class="sidebar-widget-title--sm">Compatible Browsers</span>
-                                            <ul class="list-unstyled">
-                                                <li><i class="las la-check mr-2 text-success"></i>Chrome</li>
-                                                <li><i class="las la-check mr-2 text-success"></i>Firefox</li>
-                                                <li><i class="las la-check mr-2 text-success"></i>Edge</li>
-                                            </ul>
-                                            <hr />
-
-                                            <span class="sidebar-widget-title--sm">Tags</span>
-                                            <div class="tags">
-                                                <a href="#" class="badge badge-soft-success text-success mb-1">CSS</a>
-                                                <a href="#" class="badge badge-soft-success text-success mb-1">Bootstrap</a>
-                                                <a href="#" class="badge badge-soft-success text-success mb-1">WordPress</a>
-                                                <a href="#" class="badge badge-soft-success text-success mb-1">Digital</a>
-                                            </div>
-                                            <hr />
-
-                                            <div class="col-12 p-0">
-                                                <div class="d-flex flex-row justify-content-between">
-                                                    <span class="small">File size</span>
-                                                    <strong class="small text-dark">1 GB</strong>
-                                                </div>
-                                                <div class="d-flex flex-row justify-content-between">
-                                                    <span class="small">Update</span>
-                                                    <strong class="small text-dark">Januar 03, 2020</strong>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <span class="sidebar-widget-title--sm">Kategori</span>
+                                    <div class="tags">
+                                        <a href="#" class=""><?=$l_detail->category_name?></a>
                                     </div>
                                 </div>
                             </div>

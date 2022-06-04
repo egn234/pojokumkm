@@ -55,7 +55,7 @@
                                     <form action="<?= base_url() ?>/produk" method="GET">
                                         <span class="sidebar-widget-title--sm">Keyword</span>
                                         <div class="input-group mb-4">
-                                            <input type="text" placeholder="Search ..." class="form-control" name="search">
+                                            <input type="text" placeholder="Search ..." value="<?=(isset($_GET['search']))?$_GET['search']:''?>" class="form-control" name="search">
                                             <span class="input-group-append"> <button class="btn btn-primary"> <i class="las la-search"></i></button></span>
                                         </div>
                                         <hr>
@@ -67,7 +67,10 @@
                                         ?>
                                             <div class="custom-control custom-checkbox mb-2">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]">
-                                                <label class="custom-control-label w-100" for="customCheck<?= $i ?>"><?= $val->category_name ?><span class="badge badge-light float-right"></span></label>
+                                                <label class="custom-control-label w-100" for="customCheck<?= $i ?>">
+                                                    <?= $val->category_name ?>
+                                                    <span class="badge badge-light float-right"></span>
+                                                </label>
                                             </div>
                                         <?php $i++;
                                         } ?>

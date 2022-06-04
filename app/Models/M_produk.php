@@ -133,6 +133,22 @@ class M_produk extends Model
     return $this->db->query($sql)->getResult();
   }
 
+  public function getProdukByIdLimit($idumkm, $lim)
+  {
+    $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE idumkm = $idumkm
+        AND product_status = 'on'
+        ORDER BY idproduk DESC LIMIT $lim";
+    return $this->db->query($sql)->getResult();
+  }
+
   public function countProdukByIdKategori($idkategori)
   {
     $sql = "SELECT count(idproduk) AS hitung FROM tb_produk 
