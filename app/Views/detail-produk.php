@@ -252,13 +252,13 @@
                                             <span class="sidebar-widget-title--sm">Link Produk</span>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <i class="las la-check mr-2 text-success"></i>25 Illustrations
+                                                    25 Illustrations
                                                 </li>
                                                 <li>
-                                                    <i class="las la-check mr-2 text-success"></i>Bright & Modern Style
+                                                    Bright & Modern Style
                                                 </li>
                                                 <li>
-                                                    <i class="las la-check mr-2 text-success"></i>AI, SVG, PNG Sources
+                                                    AI, SVG, PNG Sources
                                                 </li>
                                             </ul>
                                             <hr />
