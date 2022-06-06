@@ -64,10 +64,15 @@ class Produk extends BaseController
 	public function id($idproduk)
 	{
 		$detil_produk = $this->m_produk->getProdukById($idproduk)[0];
+		$link_produk = $this->m_produk->getLinkProdukByIdProduk($idproduk);
+
+		$see_also = $this->m_produk->getProdukByIdLimit($detil_produk->idumkm, 3);
 
 		$data = [
 			'title_meta' => view('homepage_partial/title-meta', ['title' => $detil_produk->product_name]),
-			'l_detail' => $detil_produk
+			'l_detail' => $detil_produk,
+			'see_also' => $see_also,
+			'l_link' => $link_produk
 		];
 		return view('detail-produk', $data);
 	}
