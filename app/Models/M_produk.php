@@ -206,4 +206,41 @@ class M_produk extends Model
     $sql = "DELETE FROM tb_produk_link WHERE idproduk = $idproduk";
     return $this->db->query($sql);
   }
+
+  // * Seller
+  public function getProdukByIdUmkmSeller($idumkm, $lim = 0, $start = 0, $search = "", $query = "")
+  {
+    $limit = ($lim != 0) ? $lim : 4;
+    $strt = ($start != 0) ? $start : 0;
+    if ($search != "") {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          LEFT JOIN tb_kategori USING (idkategori)
+          WHERE idumkm = $idumkm
+          AND ($query)
+          ORDER BY idproduk DESC LIMIT " . $strt . "," . $limit;
+    } else {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          LEFT JOIN tb_kategori USING (idkategori)
+          WHERE idumkm = $idumkm
+          ORDER BY idproduk DESC LIMIT " . $strt . "," . $limit;
+    }
+
+    return $this->db->query($sql)->getResult();
+  }
 }

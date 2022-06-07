@@ -7,52 +7,43 @@
 </head>
 
 <body>
-
     <?= $this->include('homepage_partial/navbar') ?>
     <main role="main">
         <div class="wrapper">
-
             <div class="breadcrumb-wrap">
                 <div class="container py-3">
                     <div class="row d-flex justify-content-md-between justify-content-sm-center">
                         <div class="col-md-4">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item mr-1 font-weight-bold"><a href="<?= base_url() ?>/home">Home</a></li>
+                                    <li class="breadcrumb-item mr-1 font-weight-bold"><a href="home">Home</a></li>
                                     <li class="breadcrumb-item ml-1 font-weight-bold active" aria-current="page">
-                                        Library
+                                        <?= $dataUmkm[0]->umkm_name ?>
                                     </li>
                                 </ol>
                             </nav>
                         </div>
-                        <div class="header-actions">
-                            <!-- <button class="btn btn-ghost grey-dark font-weight-bold">
-                                <i class="las la-share-alt"></i>
-                                <span>Share</span>
-                            </button>
-                            <button class="btn btn-ghost grey-dark like-button font-weight-bold">
-                                <i class="las la-hand-holding-heart"></i>
-                                <span>150 Likes</span>
-                            </button>
-                            <button class="btn btn-ghost grey-dark font-weight-bold">
-                                <i class="las la-bookmark"></i>
-                                <span><span>Save for Later</span></span>
-                            </button> -->
-
-                            <!---->
-                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-lg-3">
-                        <!-- edit in partials -->
                         <div class="sidebar-widget">
                             <div class="row">
+                                <div class="card-body px-2 py-1">
+                                    <div class="d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center">
+                                        <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $dataUmkm[0]->iduser ?>/<?= $dataUmkm[0]->umkm_pic ?>" class="img-lg rounded-circle mb-2 m-2" alt="profile image">
+                                        <div class="ml-sm-3 ml-md-0 ml-xl-3 mt-2 mt-sm-0 mt-md-2 mt-xl-0">
+                                            <h6 class="mb-1">Seller Profile</h6>
+                                            <p class="text-muted mb-1"><?= $dataUmkm[0]->umkm_name ?></p>
+                                            <p class="mb-0 text-primary font-weight-bold small"><?= $dataUmkm[0]->email ?></p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-12">
-                                    <form action="<?= base_url() ?>/produk" method="GET">
+                                    <form action="<?= base_url() ?>/seller" method="GET">
+                                        <input type="text" name="id" value="<?= $idumkm ?>" hidden>
                                         <span class="sidebar-widget-title--sm">Keyword</span>
                                         <div class="input-group mb-4">
                                             <input type="text" placeholder="Search ..." value="<?= (isset($_GET['search'])) ? $_GET['search'] : '' ?>" class="form-control" name="search">
@@ -66,13 +57,7 @@
                                         foreach ($kategori as $val) {
                                         ?>
                                             <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]"
-                                                <?php if(isset($_GET['kategori'])){
-                                                    for($x = 0; $x < count($_GET['kategori']); $x++){
-                                                        echo ($_GET['kategori'][$x] == $val->category_name)?'checked':'';
-                                                    }
-                                                }?>
-                                                >
+                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]">
                                                 <label class="custom-control-label w-100" for="customCheck<?= $i ?>">
                                                     <?= $val->category_name ?>
                                                     <span class="badge badge-light float-right"></span>
@@ -85,20 +70,20 @@
                             </div>
                         </div>
                     </div>
+                    <!-- end: left column -->
                     <div class="col-md-7 col-lg-9">
                         <div class="row">
                             <div class="col-md-12">
-                                <!-- edit in partials -->
-                                <!-- <header class="mb-3">
+                                <header class="mb-3">
                                     <div class="form-inline">
-                                        <strong class="mr-md-auto">32 Items found </strong>
-                                        <select class="mr-2 form-control">
+                                        <strong class="mr-md-auto"><?= $jumlahProduk ?> Items found </strong>
+                                        <!-- <select class="mr-2 form-control">
                                             <option>Latest items</option>
                                             <option>Trending</option>
                                             <option>Most Popular</option>
                                             <option>Cheapest</option>
-                                        </select>
-                                        <div class="btn-group">
+                                        </select> -->
+                                        <!-- <div class="btn-group">
                                             <a href="search-page-list.html" class="btn btn-white" data-toggle="tooltip" title="" data-original-title="List view">
                                                 <i class="las la-list"></i></a>
                                             <a href="search-page.html" class="btn btn-white" data-toggle="tooltip" title="" data-original-title="Grid view">
@@ -107,58 +92,57 @@
                                                 <i class="las la-sort-amount-down"></i></a>
 
 
-                                        </div>
+                                        </div> -->
                                     </div>
-                                </header> -->
+                                </header>
                             </div>
                         </div>
-                        <div class="row">
-                            <?php
-                            foreach ($l_produk as $row) {
-                            ?>
-                                <div class="col-md-4">
-                                    <!-- edit in partials -->
-                                    <div class="card item-card h-100 border-0">
-                                        <div class="item-card__image rounded">
-                                            <a href="produk/id/<?= $row->idproduk ?>">
-                                                <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>" class="img-fluid rounded" alt="">
-                                            </a>
-                                            <div class="hover-icons">
-                                                <ul class="list-unstyled">
-                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
-                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Bookmark"><i class="lar la-bookmark"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end: Item card image -->
-                                        <div class="card-body px-0 pt-3">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="item-title">
-                                                    <a href="#">
-                                                        <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
-                                                    </a>
-                                                </div>
-                                                <div class="item-price">
-                                                    <span>$14</span>
-                                                </div>
-                                            </div>
-                                            <!-- end: Card info -->
-                                            <div class="d-flex justify-content-between align-items-center item-meta">
+                        <?php
+                        foreach ($l_produk as $row) {
+                        ?>
+                            <article class="card card-product-list">
+                                <div class="row no-gutters">
+                                    <aside class="col-sm-12 col-lg-4">
+                                        <img alt="bg image" class="bg-image" src="<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>">
+                                        <!-- <a href="single-product.html" class="stretched-link swap-link"> <span class="badge badge-dark"> new </span> </a> -->
+                                    </aside>
+                                    <!-- col.// -->
+                                    <div class="col-lg-5 col-sm-12">
+                                        <div class="info-main p-4"> <a href="#" class="h4 title"><?= $row->product_name ?> </a>
+                                            <div class="d-flex justify-content-start align-items-center item-meta mt-2">
                                                 <div class="short-description mb-0">
-                                                    <p class="mb-0 extension-text"><a href="#"><?= $row->category_name ?></a><span class="ml-1">in</span> <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a> </p>
+                                                    <p class="mb-0 extension-text text-small"><a href="#"><?= $row->category_name ?></a><span class="ml-1">in</span> <a href="#"><?= $row->umkm_name ?></a> </p>
                                                 </div>
                                             </div>
-                                            <!-- end: Card meta -->
+                                            <ul class="list-unstyled mt-3">
+                                                <!-- <li> <i class="las la-check mr-2 text-success"></i>25 Illustrations </li>
+                                                <li> <i class="las la-check mr-2 text-success"></i>Bright &amp; Modern Style
+                                                </li>
+                                                <li><i class="las la-check mr-2 text-success"></i>Fully Vector</li> -->
+                                            </ul>
                                         </div>
-                                        <!-- edn:Card body -->
+                                        <!-- info-main.// -->
                                     </div>
-                                    <!-- end: Card -->
+                                    <!-- col.// -->
+                                    <aside class="col-lg-3 col-sm-12">
+                                        <div class="info-aside text-center d-flex align-items-start flex-column p-4">
+                                            <!-- <div class="price-wrap"> <span class="price h4"> $49 </span> <del class="price-old text-muted"> $32</del> </div> -->
+                                            <!-- info-price-detail // -->
+                                            <!-- <p class="text-success">12 Months support</p> -->
+                                            <br> <a href="produk/id/<?= $row->idproduk ?>" class="btn btn-primary btn-block"> Detail Produk</a>
+                                            <div class="btn-group btn-block">
+                                                <!-- <a href="#" class="btn btn-white" title="Save to favorite"> <i class="lar la-heart"></i></a>
+                                                <a href="#" class="btn btn-white" title="Buy item"> <i class="las la-shopping-cart"></i></a> -->
+                                            </div>
+                                        </div>
+                                        <!-- info-aside.// -->
+                                    </aside>
+                                    <!-- col.// -->
                                 </div>
-                                <!-- end: col -->
-                            <?php } ?>
-                        </div>
-                        <hr class="divider divider-fade" />
-                        <!-- edit in partials -->
+                                <!-- row.// -->
+                            </article>
+                        <?php } ?>
+                        <hr>
                         <nav aria-label="pagin">
                             <ul class="pagination pagination-sm">
                                 <?php if ($l_page == 1) { ?>
@@ -167,7 +151,7 @@
                                 <?php } else {
                                     $linkPrev = ($l_page > 1) ? $l_page - 1 : 1;
                                 ?>
-                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkPrev ?>">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/seller?id=<?= $idumkm ?>&&page=<?= $linkPrev ?>">Previous</a></li>
                                 <?php }
                                 $jumlahNumber = 1;
                                 $startNumber = ($l_page > $jumlahNumber) ? $l_page - $jumlahNumber : 1;
@@ -176,7 +160,7 @@
                                     $linkActive = ($l_page == $i) ? 'active' : '';
 
                                 ?>
-                                    <li class="page-item <?= $linkActive ?>"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $i ?>"><?= $i ?></a></li>
+                                    <li class="page-item <?= $linkActive ?>"><a class="page-link" href="<?= base_url() ?>/seller?id=<?= $idumkm ?>&&page=<?= $i ?>"><?= $i ?></a></li>
                                 <?php
                                 }
                                 if ($l_page == $jumlahPage) {
@@ -185,14 +169,15 @@
                                 <?php } else {
                                     $linkNext = ($l_page < $jumlahPage) ? $l_page + 1 : $jumlahPage;
                                 ?>
-                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkNext ?>">Next</a></li>
+                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/seller?id=<?= $idumkm ?>&&page=<?= $linkNext ?>">Next</a></li>
                                 <?php } ?>
                             </ul>
                         </nav>
                     </div>
+                    <!-- end: Right column -->
                 </div>
+                <!-- end:row -->
             </div>
-
         </div>
     </main>
     <?= $this->include('homepage_partial/footer') ?>
