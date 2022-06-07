@@ -20,18 +20,31 @@ class Seller extends BaseController
     public function index()
     {
         $search = (isset($_GET['search'])) ? explode(" ", $_GET['search']) : "";
-        $kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
-        $idumkm = $_GET['id'];
+        $kategori = (isset($_GET['kategori'])) ? $_GET['kategori'] : [];
+        $idumkm = (isset($_GET['id'])) ? $_GET['id'] : "";
+
+        if ($idumkm == "") {
+            return redirect()->to(base_url());
+        }
 
         if (isset($_GET['search']) || isset($_GET['kategori'])) {
-            $keyword = ["product_name LIKE '%$search[0]%'"];
-            //LOOP BUAT CARI NAMA PRODUK
-            for ($i = 1; $i < count($search); $i++) {
-                array_push($keyword, "OR product_name LIKE '%$search[$i]%' ");
-            }
-            //LOOP BUAT CARI KATEGORI
-            for ($i = 0; $i < count($kategori); $i++) {
-                array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+            if ($_GET['search'] == "" && isset($_GET['kategori'])) {
+                $keyword = ["category_name LIKE '%$kategori[0]%'"];
+
+                //LOOP BUAT CARI KATEGORI
+                for ($i = 1; $i < count($kategori); $i++) {
+                    array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+                }   
+            }else{
+                $keyword = ["product_name LIKE '%$search[0]%'"];
+                //LOOP BUAT CARI NAMA PRODUK
+                for ($i = 1; $i < count($search); $i++) {
+                    array_push($keyword, "OR product_name LIKE '%$search[$i]%' ");
+                }
+                //LOOP BUAT CARI KATEGORI
+                for ($i = 0; $i < count($kategori); $i++) {
+                    array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+                }
             }
 
             $query = implode(" ", $keyword);

@@ -4,6 +4,15 @@
 <head>
     <?= $title_meta ?>
     <?= $this->include('homepage_partial/head-css') ?>
+
+    <!-- choices css -->
+    <link href="<?=base_url()?>/assets/minia/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .product{
+            background-size: 100%;
+            background-position: center center;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,26 +29,10 @@
                                 <ol class="breadcrumb mb-0">
                                     <li class="breadcrumb-item mr-1 font-weight-bold"><a href="<?= base_url() ?>/home">Home</a></li>
                                     <li class="breadcrumb-item ml-1 font-weight-bold active" aria-current="page">
-                                        Library
+                                        Cari Produk
                                     </li>
                                 </ol>
                             </nav>
-                        </div>
-                        <div class="header-actions">
-                            <!-- <button class="btn btn-ghost grey-dark font-weight-bold">
-                                <i class="las la-share-alt"></i>
-                                <span>Share</span>
-                            </button>
-                            <button class="btn btn-ghost grey-dark like-button font-weight-bold">
-                                <i class="las la-hand-holding-heart"></i>
-                                <span>150 Likes</span>
-                            </button>
-                            <button class="btn btn-ghost grey-dark font-weight-bold">
-                                <i class="las la-bookmark"></i>
-                                <span><span>Save for Later</span></span>
-                            </button> -->
-
-                            <!---->
                         </div>
                     </div>
                 </div>
@@ -56,30 +49,35 @@
                                         <span class="sidebar-widget-title--sm">Keyword</span>
                                         <div class="input-group mb-4">
                                             <input type="text" placeholder="Search ..." value="<?= (isset($_GET['search'])) ? $_GET['search'] : '' ?>" class="form-control" name="search">
-                                            <span class="input-group-append"> <button class="btn btn-primary"> <i class="las la-search"></i></button></span>
+                                            <span class="input-group-append"> 
+                                                <button class="btn btn-primary"> <i class="las la-search"></i></button>
+                                            </span>
                                         </div>
                                         <hr>
                                         <span class="sidebar-widget-title--sm">Category</span>
+
                                         <!-- Category -->
-                                        <?php
-                                        $i = 0;
-                                        foreach ($kategori as $val) {
-                                        ?>
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]"
-                                                <?php if(isset($_GET['kategori'])){
-                                                    for($x = 0; $x < count($_GET['kategori']); $x++){
-                                                        echo ($_GET['kategori'][$x] == $val->category_name)?'checked':'';
-                                                    }
-                                                }?>
-                                                >
-                                                <label class="custom-control-label w-100" for="customCheck<?= $i ?>">
-                                                    <?= $val->category_name ?>
-                                                    <span class="badge badge-light float-right"></span>
-                                                </label>
-                                            </div>
-                                        <?php $i++;
-                                        } ?>
+                                        <div class="mb-3">
+                                            <select class="form-select" name="kategori[]" id="choices-multiple-remove-button" placeholder="Pilih Kategori..." multiple>
+                                                <option value="">Pilih Tag Kategori...</option>
+                                                <?php
+                                                $i = 0;
+                                                foreach ($kategori as $val) {
+                                                ?>
+                                                    <option value="<?=$val->category_name?>" 
+                                                        <?php if(isset($_GET['kategori'])){
+                                                            for($x = 0; $x < count($_GET['kategori']); $x++){
+                                                                echo ($_GET['kategori'][$x] == $val->category_name)?'selected':'';
+                                                            }
+                                                        }?>
+                                                    >
+                                                        <?=$val->category_name?>
+                                                    </option>
+                                                <?php $i++;
+                                                } ?>
+
+                                            </select>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -87,46 +85,20 @@
                     </div>
                     <div class="col-md-7 col-lg-9">
                         <div class="row">
-                            <div class="col-md-12">
-                                <!-- edit in partials -->
-                                <!-- <header class="mb-3">
-                                    <div class="form-inline">
-                                        <strong class="mr-md-auto">32 Items found </strong>
-                                        <select class="mr-2 form-control">
-                                            <option>Latest items</option>
-                                            <option>Trending</option>
-                                            <option>Most Popular</option>
-                                            <option>Cheapest</option>
-                                        </select>
-                                        <div class="btn-group">
-                                            <a href="search-page-list.html" class="btn btn-white" data-toggle="tooltip" title="" data-original-title="List view">
-                                                <i class="las la-list"></i></a>
-                                            <a href="search-page.html" class="btn btn-white" data-toggle="tooltip" title="" data-original-title="Grid view">
-                                                <i class="las la-border-all"></i></a>
-                                            <a href="#" class="btn btn-white" data-toggle="tooltip" title="" data-original-title="Price Down">
-                                                <i class="las la-sort-amount-down"></i></a>
-
-
-                                        </div>
-                                    </div>
-                                </header> -->
-                            </div>
-                        </div>
-                        <div class="row">
                             <?php
                             foreach ($l_produk as $row) {
                             ?>
                                 <div class="col-md-4">
                                     <!-- edit in partials -->
                                     <div class="card item-card h-100 border-0">
-                                        <div class="item-card__image rounded">
-                                            <a href="produk/id/<?= $row->idproduk ?>">
-                                                <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>" class="img-fluid rounded" alt="">
-                                            </a>
+                                        <div class="item-card__image rounded product" style="
+                                            height: 250px; 
+                                            background-image: url(<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>);
+                                        ">
+                                            <a href="produk/id/<?=$row->idproduk?>"></a>
                                             <div class="hover-icons">
                                                 <ul class="list-unstyled">
                                                     <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
-                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Bookmark"><i class="lar la-bookmark"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -134,18 +106,19 @@
                                         <div class="card-body px-0 pt-3">
                                             <div class="d-flex justify-content-between align-items-start">
                                                 <div class="item-title">
-                                                    <a href="#">
+                                                    <a href="produk/id/<?= $row->idproduk ?>">
                                                         <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
                                                     </a>
-                                                </div>
-                                                <div class="item-price">
-                                                    <span>$14</span>
                                                 </div>
                                             </div>
                                             <!-- end: Card info -->
                                             <div class="d-flex justify-content-between align-items-center item-meta">
                                                 <div class="short-description mb-0">
-                                                    <p class="mb-0 extension-text"><a href="#"><?= $row->category_name ?></a><span class="ml-1">in</span> <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a> </p>
+                                                    <p class="mb-0 extension-text">
+                                                        <a href="<?=base_url()?>/produk?search=&kategori[]=<?=$row->category_name?>"><?= $row->category_name ?></a>
+                                                        <span class="ml-1">in</span> 
+                                                        <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <!-- end: Card meta -->
@@ -198,7 +171,28 @@
     <?= $this->include('homepage_partial/footer') ?>
 
     <?= $this->include('homepage_partial/foot-js') ?>
+    <!-- choices js -->
+    <script src="<?=base_url()?>/assets/minia/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var genericExamples = document.querySelectorAll('[data-trigger]');
+            for (i = 0; i < genericExamples.length; ++i) {
+              var element = genericExamples[i];
+              new Choices(element, {
+                placeholderValue: 'This is a placeholder set in the config',
+                searchPlaceholderValue: 'This is a search placeholder',
+              });
+            }
 
+            // multiple Remove CancelButton
+            var multipleCancelButton = new Choices(
+              '#choices-multiple-remove-button',
+              {
+                removeItemButton: true,
+              }
+            );
+        });        
+    </script>
     <!-- endbuild -->
 
 </body>

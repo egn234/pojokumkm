@@ -4,6 +4,14 @@
 <head>
     <?= $title_meta ?>
     <?= $this->include('homepage_partial/head-css') ?>
+
+    <style type="text/css">
+        .profile-pic{
+            background-image: url(<?= base_url() ?>/uploads/user/umkm/user<?= $dataUmkm[0]->iduser ?>/<?= $dataUmkm[0]->umkm_pic ?>);
+            background-size: 100%;
+            background-position: center center;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,17 +37,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-lg-3">
+                        <div class="card mb-4">
+                            <div class="card-body px-3 py-2">
+                                <div class="d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center">
+                                    <div class="img-lg mb-2 rounded-circle m-2 profile-pic"></div>
+                                    <div class="ml-sm-3 ml-md-0 ml-xl-3 mt-2 mt-sm-0 mt-md-2 mt-xl-0">
+                                        <h6 class="mb-1"><?= $dataUmkm[0]->umkm_name ?></h6>
+                                        <p class="text-muted mb-1"><?= $dataUmkm[0]->email ?></p>
+                                        <p class="mb-0 text-primary font-weight-bold small">Toko</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="sidebar-widget">
                             <div class="row">
                                 <div class="card-body px-2 py-1">
-                                    <div class="d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center">
-                                        <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $dataUmkm[0]->iduser ?>/<?= $dataUmkm[0]->umkm_pic ?>" class="img-lg rounded-circle mb-2 m-2" alt="profile image">
-                                        <div class="ml-sm-3 ml-md-0 ml-xl-3 mt-2 mt-sm-0 mt-md-2 mt-xl-0">
-                                            <h6 class="mb-1">Seller Profile</h6>
-                                            <p class="text-muted mb-1"><?= $dataUmkm[0]->umkm_name ?></p>
-                                            <p class="mb-0 text-primary font-weight-bold small"><?= $dataUmkm[0]->email ?></p>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="col-12">
                                     <form action="<?= base_url() ?>/seller" method="GET">
@@ -57,7 +70,13 @@
                                         foreach ($kategori as $val) {
                                         ?>
                                             <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]"
+                                                <?php if(isset($_GET['kategori'])){
+                                                    for($x = 0; $x < count($_GET['kategori']); $x++){
+                                                        echo ($_GET['kategori'][$x] == $val->category_name)?'checked':'';
+                                                    }
+                                                }?>
+                                                >
                                                 <label class="custom-control-label w-100" for="customCheck<?= $i ?>">
                                                     <?= $val->category_name ?>
                                                     <span class="badge badge-light float-right"></span>
