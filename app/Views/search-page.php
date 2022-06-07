@@ -66,7 +66,13 @@
                                         foreach ($kategori as $val) {
                                         ?>
                                             <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck<?= $i ?>" value="<?= $val->category_name ?>" name="kategori[]"
+                                                <?php if(isset($_GET['kategori'])){
+                                                    for($x = 0; $x < count($_GET['kategori']); $x++){
+                                                        echo ($_GET['kategori'][$x] == $val->category_name)?'checked':'';
+                                                    }
+                                                }?>
+                                                >
                                                 <label class="custom-control-label w-100" for="customCheck<?= $i ?>">
                                                     <?= $val->category_name ?>
                                                     <span class="badge badge-light float-right"></span>
@@ -79,7 +85,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-7 col-lg-9">
                         <div class="row">
                             <div class="col-md-12">

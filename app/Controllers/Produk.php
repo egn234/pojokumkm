@@ -21,14 +21,23 @@ class Produk extends BaseController
 		$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
 
 		if (isset($_GET['search']) || isset($_GET['kategori'])) {
-			$keyword = ["product_name LIKE '%$search[0]%'"];
-			//LOOP BUAT CARI NAMA PRODUK
-			for ($i = 1; $i < count($search); $i++) {
-				array_push($keyword, "OR product_name LIKE '%$search[$i]%' ");
-			}
-			//LOOP BUAT CARI KATEGORI
-			for ($i = 0; $i < count($kategori); $i++) {
-				array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+			if ($_GET['search'] == "" && isset($_GET['kategori'])) {
+				$keyword = ["category_name LIKE '%$kategori[0]%'"];
+
+				//LOOP BUAT CARI KATEGORI
+				for ($i = 1; $i < count($kategori); $i++) {
+					array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+				}	
+			}else{
+				$keyword = ["product_name LIKE '%$search[0]%'"];
+				//LOOP BUAT CARI NAMA PRODUK
+				for ($i = 1; $i < count($search); $i++) {
+					array_push($keyword, "OR product_name LIKE '%$search[$i]%' ");
+				}
+				//LOOP BUAT CARI KATEGORI
+				for ($i = 0; $i < count($kategori); $i++) {
+					array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+				}
 			}
 
 			$query = implode(" ", $keyword);
@@ -52,7 +61,7 @@ class Produk extends BaseController
 		}
 		$getAllkategori = $this->m_kategori->getAllKategori();
 		$data = [
-			'title_meta' => view('homepage_partial/title-meta', ['title' => 'Grid Produk']),
+			'title_meta' => view('homepage_partial/title-meta', ['title' => 'List Produk']),
 			'l_produk' => $l_produk,
 			'l_page' => $page,
 			'jumlahPage' => $jumlahPage,
