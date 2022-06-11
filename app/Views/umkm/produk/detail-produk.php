@@ -1,11 +1,13 @@
-<?php 
-    use App\Models\M_produk;
-    $this->m_produk = new M_produk();
-    
-    $hitung_link = $this->m_produk->countLinkProdukByIdProduk($l_detail->idproduk)[0]->hitung;
-    if ($hitung_link > 0) {
-        $l_link_produk = $this->m_produk->getLinkProdukByIdProduk($l_detail->idproduk);
-    }
+<?php
+
+use App\Models\M_produk;
+
+$this->m_produk = new M_produk();
+
+$hitung_link = $this->m_produk->countLinkProdukByIdProduk($l_detail->idproduk)[0]->hitung;
+if ($hitung_link > 0) {
+    $l_link_produk = $this->m_produk->getLinkProdukByIdProduk($l_detail->idproduk);
+}
 ?>
 
 <?= $this->include('partials/head-main') ?>
@@ -15,14 +17,14 @@
     <?= $title_meta ?>
 
     <!-- DataTables -->
-    <link href="<?=base_url()?>/assets/minia/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="<?=base_url()?>/assets/minia/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>/assets/minia/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>/assets/minia/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
     <!-- glightbox css -->
-    <link rel="stylesheet" href="<?=base_url()?>/assets/minia/assets/libs/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/minia/assets/libs/glightbox/css/glightbox.min.css">
 
     <!-- Responsive datatable examples -->
-    <link href="<?=base_url()?>/assets/minia/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>/assets/minia/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
     <?= $this->include('partials/head-css') ?>
 
@@ -53,8 +55,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/produk/list">List Produk</a></li>
+                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/produk/list">List Produk</a></li>
                                     <li class="breadcrumb-item active">Detail Produk</li>
                                 </ol>
                             </div>
@@ -65,7 +67,7 @@
                 <!-- end page title -->
 
                 <div class="row">
-                    <?=session()->getFlashdata('notif');?>
+                    <?= session()->getFlashdata('notif'); ?>
                     <div class="col-4">
                         <div class="card">
                             <div class="card-body">
@@ -76,28 +78,30 @@
                                 <div id="productSlide" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active">
-                                            <a href="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_main_pic?>" class="image-popup">
-                                                <img class="d-block img-fluid mx-auto" src="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_main_pic?>" alt="First slide">
+                                            <a href="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_main_pic ?>" class="image-popup">
+                                                <img class="d-block img-fluid mx-auto" src="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_main_pic ?>" alt="First slide">
                                             </a>
                                         </div>
-                                        <?php if(!is_null($l_detail->product_extra_pic1)){?>
-                                        <div class="carousel-item">
-                                            <a href="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_extra_pic1?>" class="image-popup">
-                                                <img class="d-block img-fluid mx-auto" src="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_extra_pic1?>" alt="Second slide">
-                                            </a>
-                                        </div>
-                                        <?php } if(!is_null($l_detail->product_extra_pic2)){?>
-                                        <div class="carousel-item">
-                                            <a href="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_extra_pic2?>" class="image-popup">
-                                                <img class="d-block img-fluid mx-auto" src="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_extra_pic2?>" alt="Third slide">
-                                            </a>
-                                        </div>
-                                        <?php } if(!is_null($l_detail->product_extra_pic3)){?>
-                                        <div class="carousel-item">
-                                            <a href="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_extra_pic3?>" class="image-popup">
-                                                <img class="d-block img-fluid mx-auto" src="<?=base_url()?>/uploads/user/umkm/user<?=$l_detail->iduser?>/prd/<?=$l_detail->product_extra_pic3?>" alt="Fourth slide">
-                                            </a>
-                                        </div>
+                                        <?php if (!is_null($l_detail->product_extra_pic1)) { ?>
+                                            <div class="carousel-item">
+                                                <a href="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_extra_pic1 ?>" class="image-popup">
+                                                    <img class="d-block img-fluid mx-auto" src="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_extra_pic1 ?>" alt="Second slide">
+                                                </a>
+                                            </div>
+                                        <?php }
+                                        if (!is_null($l_detail->product_extra_pic2)) { ?>
+                                            <div class="carousel-item">
+                                                <a href="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_extra_pic2 ?>" class="image-popup">
+                                                    <img class="d-block img-fluid mx-auto" src="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_extra_pic2 ?>" alt="Third slide">
+                                                </a>
+                                            </div>
+                                        <?php }
+                                        if (!is_null($l_detail->product_extra_pic3)) { ?>
+                                            <div class="carousel-item">
+                                                <a href="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_extra_pic3 ?>" class="image-popup">
+                                                    <img class="d-block img-fluid mx-auto" src="<?= base_url() ?>/uploads/user/umkm/user<?= $l_detail->iduser ?>/prd/<?= $l_detail->product_extra_pic3 ?>" alt="Fourth slide">
+                                                </a>
+                                            </div>
                                         <?php } ?>
                                     </div>
                                     <a class="carousel-control-prev" href="#productSlide" role="button" data-bs-slide="prev">
@@ -125,7 +129,7 @@
                                     <div class="col-sm-auto order-1 order-sm-2">
                                         <div class="d-flex align-items-start justify-content-end gap-2">
                                             <div>
-                                                <a href="<?=base_url()?>/umkm/produk/edit/<?=$l_detail->idproduk?>" class="btn btn-soft-info"><i class="fa fa-edit"></i> Ubah Info Produk</a>
+                                                <a href="<?= base_url() ?>/umkm/produk/edit/<?= $l_detail->idproduk ?>" class="btn btn-soft-info"><i class="fa fa-edit"></i> Ubah Info Produk</a>
                                             </div>
                                             <div>
                                                 <button type="button" class="btn btn-soft-danger"><i class="fa fa-trash"></i> Hapus</button>
@@ -144,7 +148,7 @@
                                         </div>
                                         <div class="col-xl">
                                             <div class="text-muted">
-                                                <?=$l_detail->product_name?>
+                                                <?= $l_detail->product_name ?>
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +163,7 @@
                                         </div>
                                         <div class="col-xl">
                                             <div class="text-muted">
-                                                <?=$l_detail->category_name?>
+                                                <?= $l_detail->category_name ?>
                                             </div>
                                         </div>
                                     </div>
@@ -175,18 +179,19 @@
                                         <div class="col-xl">
                                             <div class="text-muted">
                                                 <ul class="list-unstyled mb-0">
-                                                    <?php if ($hitung_link > 0){?>
-                                                    <?php foreach($l_link_produk as $li){?>
-                                                    <li class="py-1">
-                                                        <a href="<?=prep_url($li->link_address)?>" target="_blank">
-                                                            <?=$li->link_name?> <i class="fa fa-external-link-alt"></i>
-                                                        </a>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <a href="<?=base_url()?>/umkm/produk/del_link/<?=$l_detail->idproduk?>/<?=$li->idprodlink?>">
-                                                            <span class="fa fa-trash text-danger"></span>
-                                                        </a>
-                                                    </li>
-                                                    <?php }}?>
+                                                    <?php if ($hitung_link > 0) { ?>
+                                                        <?php foreach ($l_link_produk as $li) { ?>
+                                                            <li class="py-1">
+                                                                <a href="<?= prep_url($li->link_address) ?>" target="_blank">
+                                                                    <?= $li->link_name ?> <i class="fa fa-external-link-alt"></i>
+                                                                </a>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <a href="<?= base_url() ?>/umkm/produk/del_link/<?= $l_detail->idproduk ?>/<?= $li->idprodlink ?>">
+                                                                    <span class="fa fa-trash text-danger"></span>
+                                                                </a>
+                                                            </li>
+                                                    <?php }
+                                                    } ?>
                                                     <li class="py-1">
                                                         <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#addLink">
                                                             Tambah Link <span class="fa fa-plus"></span>
@@ -207,7 +212,7 @@
                                         </div>
                                         <div class="col-xl">
                                             <div class="text-muted">
-                                                <?=$l_detail->description?>
+                                                <?= $l_detail->description ?>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +237,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div> <!-- end row -->
 
@@ -249,29 +254,28 @@
 <!-- END layout-wrapper -->
 
 <!-- sample modal content -->
-<div id="addLink" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="setAds" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah Link</h5>
+                <h5 class="modal-title" id="myModalLabel">Iklan Produk</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="konfirAdd" action="<?=base_url()?>/umkm/produk/add_link/<?=$l_detail->idproduk?>" method="post">
+                <form id="konfirAdd" action="<?= base_url() ?>/umkm/produk/use_ads/" method="post">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-12">
                             <div class="mb-3">
-                                <label class="form-label">Nama Link</label>
+                                <label class="form-label">List Voucher</label>
                                 <div class="col-sm-12">
-                                    <input type="text" name="link_name" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="mb-3">
-                                <label class="form-label">Link Produk</label>
-                                <div class="col-sm-12">
-                                    <input type="text" name="product_link" class="form-control" required>
+                                    <input type="text" name="idproduk" class="form-control" value="<?= $l_detail->idproduk ?>" hidden>
+                                    <input type="text" name="idumkm" class="form-control" value="<?= $l_detail->idumkm ?>" hidden>
+                                    <select class="js-choices form-control" name="voucher">
+                                        <option value="">Pilih Voucher...</option>
+                                        <?php foreach ($l_order as $row) { ?>
+                                            <option value="<?= $row->idads; ?>-<?= $row->ads_amount; ?>-<?= $row->ads_duration; ?>"><?= $row->ads_name . '&nbsp-' . $row->ads_duration . '&nbspHari&nbsp-&nbspSisa Voucher :&nbsp' . $row->ads_amount; ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -293,12 +297,12 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- glightbox js -->
-<script src="<?=base_url()?>/assets/minia/assets/libs/glightbox/js/glightbox.min.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/libs/glightbox/js/glightbox.min.js"></script>
 
 <!-- lightbox init -->
-<script src="<?=base_url()?>/assets/minia/assets/js/pages/lightbox.init.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/js/pages/lightbox.init.js"></script>
 
-<script src="<?=base_url()?>/assets/minia/assets/js/app.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/js/app.js"></script>
 
 </body>
 

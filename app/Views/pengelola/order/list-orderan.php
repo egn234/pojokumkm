@@ -22,7 +22,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('umkm/menu') ?>
+    <?= $this->include('pengelola/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -40,8 +40,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/dashboard">PojokUMKM</a></li>
-                                    <li class="breadcrumb-item active">List Voucher Iklan</li>
+                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/pengelola/dashboard">PojokUMKM</a></li>
+                                    <li class="breadcrumb-item active">List Orderan</li>
                                 </ol>
                             </div>
 
@@ -54,22 +54,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">List Voucher Iklan yang dimiliki</p>
+                                <p class="card-title-desc">List Orderan Masuk</p>
                             </div>
                             <div class="card-body">
                                 <?= session()->getFlashdata('notif'); ?>
-                                <div style="margin-bottom: 15px">
-                                    <a href="<?= base_url() ?>/umkm/iklan/order" type="button" class="btn btn-info">
-                                        Pesan Voucher Iklan
-                                    </a>
-                                </div>
-                                <table class="table dtable table-striped table-bordered align-middle nowrap">
+                                <table class="table dtable table-striped table-sm table-bordered align-middle nowrap">
                                     <thead>
                                         <th>No.</th>
-                                        <th>Paket Iklan</th>
-                                        <th>Durasi</th>
+                                        <th>Nama UMKM</th>
                                         <th>Jumlah Voucher</th>
-                                        <th>Total Harga</th>
+                                        <th>Tanggal Order</th>
+                                        <th>Total Pembayaran</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </thead>
@@ -78,11 +73,10 @@
                                         <?php foreach ($l_order as $a) { ?>
                                             <tr>
                                                 <td><?= $c ?></td>
-                                                <td><?= $a->ads_name ?></td>
-                                                <td><?= $a->ads_duration ?></td>
+                                                <td><?= $a->umkm_name ?></td>
                                                 <td><?= $a->item_amount ?></td>
+                                                <td><?= $a->date_ordered ?></td>
                                                 <td><?= $a->payment_amount ?></td>
-
                                                 <?php if ($a->status == "Menunggu Bukti Transfer") { ?>
                                                     <td class="text-danger"><?= $a->status ?></td>
                                                 <?php } elseif ($a->status == "Dalam Proses") { ?>
@@ -91,10 +85,13 @@
                                                     <td class="text-success"><?= $a->status ?></td>
                                                 <?php } ?>
                                                 <td>
-                                                    <div class="d-grid gap-2">
-                                                        <a href="<?= base_url() ?>/umkm/iklan/detail/<?= $a->idorder ?>" class="btn btn-outline-info">Detail</a>
-                                                    </div>
+                                                    <!-- <?php if ($a->status == "Dalam Proses") { ?>
+                                                        <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#accOrderan">Accept</button>
+                                                    <?php } ?> -->
+                                                    <a href="<?= base_url() ?>/pengelola/order/detail/<?= $a->idorder ?>" class="btn btn-outline-info btn-sm">Detail</a>
                                                 </td>
+
+
                                             </tr>
                                             <?php $c++ ?>
                                         <?php } ?>
@@ -110,7 +107,6 @@
         </div>
         <!-- End Page-content -->
 
-
         <?= $this->include('partials/footer') ?>
     </div>
     <!-- end main content-->
@@ -118,7 +114,36 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?= $this->include('umkm/right-sidebar') ?>
+<!-- sample modal content -->
+<!-- <div id="accOrderan" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Konfirmasi Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="konfirAdd" action="<?= base_url() ?>/pengelola/umkm/add_proc" method="post">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
+            </div>
+        </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div> -->
+<!-- /.modal -->
+
+<?= $this->include('pengelola/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
