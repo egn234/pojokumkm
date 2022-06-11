@@ -243,4 +243,27 @@ class M_produk extends Model
 
     return $this->db->query($sql)->getResult();
   }
+
+  public function getProdukAds($idproduk)
+  {
+    $sql = "SELECT * FROM `tr_umkm_ads_used` WHERE idproduk = $idproduk";
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function getProdukAdsRandom()
+  {
+    $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          JOIN tr_umkm_ads_used USING (idproduk)
+          LEFT JOIN tb_kategori USING (idkategori)
+    ORDER BY RAND() LIMIt 3";
+    return $this->db->query($sql)->getResult();
+  }
 }

@@ -109,6 +109,51 @@
                         </div>
                         <div class="row">
                             <?php
+                            foreach ($l_Ads_Random as $row) {
+                            ?>
+                                <div class="col-md-4">
+                                    <!-- edit in partials -->
+                                    <div class="card item-card h-100 border-0">
+                                        <div class="item-card__image rounded">
+                                            <a href="produk/id/<?= $row->idproduk ?>">
+                                                <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>" class="img-fluid rounded" alt="">
+                                            </a>
+                                            <div class="hover-icons">
+                                                <ul class="list-unstyled">
+                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
+                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Bookmark"><i class="lar la-bookmark"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- end: Item card image -->
+                                        <div class="card-body px-0 pt-3">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div class="item-title">
+                                                    <a href="#">
+                                                        <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
+                                                    </a>
+                                                </div>
+                                                <div class="item-price">
+                                                    <span>$14</span>
+                                                </div>
+                                            </div>
+                                            <!-- end: Card info -->
+                                            <div class="d-flex justify-content-between align-items-center item-meta">
+                                                <div class="short-description mb-0">
+                                                    <p class="mb-0 extension-text"><a href="#"><?= $row->category_name ?></a><span class="ml-1">in</span> <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a> </p>
+                                                </div>
+                                            </div>
+                                            <!-- end: Card meta -->
+                                        </div>
+                                        <!-- edn:Card body -->
+                                    </div>
+                                    <!-- end: Card -->
+                                </div>
+                                <!-- end: col -->
+                            <?php } ?>
+                        </div>
+                        <div class="row">
+                            <?php
                             foreach ($l_produk as $row) {
                             ?>
                                 <div class="col-md-4">

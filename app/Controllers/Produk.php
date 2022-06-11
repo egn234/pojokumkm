@@ -51,12 +51,15 @@ class Produk extends BaseController
 			$l_produk = $this->m_produk->getHomeProduct($limit, $limitStart);
 		}
 		$getAllkategori = $this->m_kategori->getAllKategori();
+
+		$getProdukAdsRandom = $this->m_produk->getProdukAdsRandom();
 		$data = [
 			'title_meta' => view('homepage_partial/title-meta', ['title' => 'Grid Produk']),
 			'l_produk' => $l_produk,
 			'l_page' => $page,
 			'jumlahPage' => $jumlahPage,
-			'kategori' => $getAllkategori
+			'kategori' => $getAllkategori,
+			'l_Ads_Random' => $getProdukAdsRandom
 		];
 		return view('search-page', $data);
 	}
