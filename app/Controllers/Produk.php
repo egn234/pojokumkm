@@ -144,7 +144,7 @@ class Produk extends BaseController
 		$getAllkategori = $this->m_kategori->getAllKategori();
 
 		$data = [
-			'title_meta' => view('homepage_partial/title-meta', ['title' => 'List Produk']),
+			'title_meta' => view('homepage_partial/title-meta', ['title' => 'List Produk Rekomendasi']),
 			'l_produk' => $l_produk,
 			'l_page' => $page,
 			'jumlahPage' => $jumlahPage,
