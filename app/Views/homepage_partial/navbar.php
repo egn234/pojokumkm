@@ -7,8 +7,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item swap-link"> <a href="<?= base_url() ?>/home" class="nav-link">Home</a> </li>
-                        <li class="nav-item swap-link"> <a href="<?= base_url() ?>/produk" class="nav-link">Produk</a> </li>
+                        <li class="nav-item swap-link <?=($title == 'Home')?'active':''?>"> <a href="<?= base_url() ?>/home" class="nav-link">Home</a> </li>
+                        <li class="nav-item swap-link <?=($title == 'List Produk')?'active':''?>"> <a href="<?= base_url() ?>/produk" class="nav-link">Produk</a> </li>
                     </ul>
                     <ul class="navbar-nav">
                         <?php if (session()->get('logged_in') == TRUE) { ?>
