@@ -59,7 +59,7 @@
                             <div class="card-body">
                                 <?= session()->getFlashdata('notif'); ?>
                                 <div style="margin-bottom: 15px">
-                                    <a href="<?= base_url() ?>/umkm/iklan/order" type="button" class="btn btn-info">
+                                    <a href="<?= base_url() ?>/umkm/order/order" type="button" class="btn btn-info">
                                         Pesan Voucher Iklan
                                     </a>
                                 </div>
@@ -81,7 +81,7 @@
                                                 <td><?= $a->ads_name ?></td>
                                                 <td><?= $a->ads_duration ?></td>
                                                 <td><?= $a->item_amount ?></td>
-                                                <td><?= $a->payment_amount ?></td>
+                                                <td>Rp.<?= number_format($a->payment_amount, 0, ',', '.'); ?></td>
 
                                                 <?php if ($a->status == "Menunggu Bukti Transfer") { ?>
                                                     <td class="text-danger"><?= $a->status ?></td>
@@ -92,7 +92,7 @@
                                                 <?php } ?>
                                                 <td>
                                                     <div class="d-grid gap-2">
-                                                        <a href="<?= base_url() ?>/umkm/iklan/detail/<?= $a->idorder ?>" class="btn btn-outline-info">Detail</a>
+                                                        <a href="<?= base_url() ?>/umkm/order/detail/<?= $a->idorder ?>" class="btn btn-outline-info">Detail</a>
                                                     </div>
                                                 </td>
                                             </tr>

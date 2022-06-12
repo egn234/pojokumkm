@@ -243,4 +243,100 @@ class M_produk extends Model
 
     return $this->db->query($sql)->getResult();
   }
+
+  public function getProdukAds($idproduk)
+  {
+    $sql = "SELECT * FROM `tr_umkm_ads_used` WHERE idproduk = $idproduk";
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function getProdukAdsRandom($query = "")
+  {
+    $tgl = date('Y-M-d H:i:s');
+    if ($query != "") {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name,
+        tr_umkm_ads_used.ads_date_finished AS deadline
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          JOIN tr_umkm_ads_used USING (idproduk)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE tr_umkm_ads_used.ads_date_finished > '$tgl' 
+        AND tb_produk.product_status = 'on'
+        AND ($query) 
+    ORDER BY RAND() LIMIt 3";
+    } else {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name,
+        tr_umkm_ads_used.ads_date_finished AS deadline
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          JOIN tr_umkm_ads_used USING (idproduk)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE tr_umkm_ads_used.ads_date_finished > '$tgl' 
+        AND tb_produk.product_status = 'on' 
+    ORDER BY RAND() LIMIt 3";
+    }
+
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function getAllAdsProduk($lim = 0, $start = 0, $search = "", $query = "")
+  {
+    $limit = ($lim != 0) ? $lim : 4;
+    $strt = ($start != 0) ? $start : 0;
+    $tgl = date('Y-M-d H:i:s');
+
+    if ($search != "") {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name,
+        tr_umkm_ads_used.ads_date_finished AS deadline
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          JOIN tr_umkm_ads_used USING (idproduk)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE tr_umkm_ads_used.ads_date_finished > '$tgl' 
+        AND tb_produk.product_status = 'on' 
+        AND ($query) LIMIT " . $strt . "," . $limit;
+    } else {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name,
+        tr_umkm_ads_used.ads_date_finished AS deadline
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          JOIN tr_umkm_ads_used USING (idproduk)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE tr_umkm_ads_used.ads_date_finished > '$tgl' 
+        AND tb_produk.product_status = 'on'
+          ORDER BY idproduk DESC LIMIT " . $strt . "," . $limit;
+    }
+
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function getProdukAdsAll()
+  {
+    $sql = "SELECT * FROM `tr_umkm_ads_used`";
+    return $this->db->query($sql)->getResult();
+  }
 }

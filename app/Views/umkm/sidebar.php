@@ -10,13 +10,13 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="<?=base_url()?>/umkm/dashboard">
+                    <a href="<?= base_url() ?>/umkm/dashboard">
                         <i data-feather="home"></i>
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?=base_url()?>/umkm/produk/list">
+                    <a href="<?= base_url() ?>/umkm/produk/list">
                         <i data-feather="box"></i>
                         <span data-key="t-produk">Produk</span>
                     </a>
@@ -29,20 +29,15 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="<?=base_url()?>/umkm/order/list" data-key="t-user-grid">
+                            <a href="<?= base_url() ?>/umkm/order/list" data-key="t-user-grid">
                                 <span data-key="t-authentication">Pesan Voucher Iklan</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?=base_url()?>/umkm/Iklan/list" data-key="t-user-grid">
+                            <a href="<?= base_url() ?>/umkm/Iklan/list" data-key="t-user-grid">
                                 <span data-key="t-authentication">Daftar Voucher</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="<?=base_url()?>/umkm/umkm/list" data-key="t-user-grid">
-                                <span data-key="t-authentication">Pasang Iklan</span>
-                            </a>
-                        </li>   
                     </ul>
                 </li>
             </ul>

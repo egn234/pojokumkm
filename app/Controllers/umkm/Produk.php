@@ -72,13 +72,15 @@ class Produk extends \App\Controllers\BaseController
 		}
 
 		$l_detail = $this->m_produk->getProdukById($idproduk)[0];
+		$l_produk_ads = $this->m_produk->getProdukAds($idproduk);
 		$detilUser = $this->m_umkm->getJoinUserUmkm($iduser)[0];
 
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Detail Produk']),
 			'l_detail' => $l_detail,
 			'detail_user' => $detilUser,
-			'l_order' => $l_order
+			'l_order' => $l_order,
+			'l_produk_ads' => $l_produk_ads
 
 		];
 

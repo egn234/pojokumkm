@@ -202,21 +202,38 @@ if ($hitung_link > 0) {
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="py-1">
-                                    <div class="row">
-                                        <div class="col-xl-3">
-                                            <div>
-                                                <h5 class="font-size-15">Deskripsi Produk :</h5>
+                                <?php if (count($l_produk_ads) != 0) { ?>
+                                    <div class="py-1">
+                                        <div class="row">
+                                            <div class="col-xl-3">
+                                                <div>
+                                                    <h5 class="font-size-15">Produk ini Diiklankan :</h5>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl">
-                                            <div class="text-muted">
-                                                <?= $l_detail->description ?>
+                                            <div class="col-xl">
+                                                <div class="text-muted">
+                                                    <?= $l_produk_ads[0]->ads_date_start ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div class="py-1">
+                                        <div class="row">
+                                            <div class="col-xl-3">
+                                                <div>
+                                                    <h5 class="font-size-15">Iklan ini Berakhir :</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl">
+                                                <div class="text-muted">
+                                                    <?= $l_produk_ads[0]->ads_date_finished ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
                             </div>
                         </div>
 

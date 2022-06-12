@@ -52,7 +52,8 @@ class M_order extends Model
         JOIN tb_umkm USING (idumkm) 
         JOIN tb_user USING (iduser) 
         JOIN tb_ads USING(idads)
-        WHERE idumkm = $idumkm";
+        WHERE idumkm = $idumkm
+        ORDER BY tb_order.date_ordered DESC ";
     return $this->db->query($sql)->getResult();
   }
 

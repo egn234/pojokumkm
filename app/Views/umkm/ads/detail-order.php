@@ -148,7 +148,7 @@
                                         <?php if ($detail_orderan->status == "Menunggu Bukti Transfer") { ?>
                                             <button type="button" class="btn btn-info btn" data-bs-toggle="modal" data-bs-target="#sendPicPayment">Upload Bukti Pembayaran</button>
                                         <?php } ?>
-                                        <a href="<?= base_url() ?>/umkm/iklan/list" class="btn btn-secondary">Kembali</a>
+                                        <a href="<?= base_url() ?>/umkm/order/list" class="btn btn-secondary">Kembali</a>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addPic" action="<?= base_url() ?>/umkm/iklan/add_pic_payment" method="post" enctype="multipart/form-data">
+                <form id="addPic" action="<?= base_url() ?>/umkm/order/add_pic_payment" method="post" enctype="multipart/form-data">
                     <label class="form-label">Foto Bukti Pembayaran <span class="text-danger">*</span></label>
                     <div class="col-sm-12">
                         <input type="file" name="payment_img" class="form-control fileupload" accept="image/jpg, image/jpeg" required>
