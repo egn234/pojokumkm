@@ -200,36 +200,10 @@
                         <!-- edit in partials -->
                         <nav aria-label="pagin">
                             <ul class="pagination pagination-sm">
-                                <?php if ($search == 0) { ?>
-                                    <?php if ($l_page == 1) { ?>
-                                        <li class="page-item"><a class="btn page-link disabled" href="#">Previous</a></li>
+                                <?php if ($l_page == 1) { ?>
+                                    <li class="page-item"><a class="btn page-link disabled" href="#">Previous</a></li>
 
-                                    <?php } else {
-                                        $linkPrev = ($l_page > 1) ? $l_page - 1 : 1;
-                                    ?>
-                                        <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkPrev ?>">Previous</a></li>
-                                    <?php }
-                                    $jumlahNumber = 1;
-                                    $startNumber = ($l_page > $jumlahNumber) ? $l_page - $jumlahNumber : 1;
-                                    $endNumber = ($l_page < ($jumlahPage - $jumlahNumber)) ? $l_page + $jumlahNumber : $jumlahPage;
-                                    for ($i = $startNumber; $i <= $endNumber; $i++) {
-                                        $linkActive = ($l_page == $i) ? 'active' : '';
-
-                                    ?>
-                                        <li class="page-item <?= $linkActive ?>"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $i ?>"><?= $i ?></a></li>
-                                    <?php
-                                    }
-                                    if ($l_page == $jumlahPage) {
-                                    ?>
-                                        <li class="page-item"><a class="btn page-link disabled" href="#">Next</a></li>
-                                    <?php } else {
-                                        $linkNext = ($l_page < $jumlahPage) ? $l_page + 1 : $jumlahPage;
-                                    ?>
-                                        <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkNext ?>">Next</a></li>
-                                    <?php } ?>
-                                    <!-- Pembatas -->
                                 <?php } else {
-<<<<<<< HEAD
                                     $linkPrev = ($l_page > 1) ? $l_page - 1 : 1;
                                 ?>
                                     <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkPrev.$s.$k1 ?>">Previous</a></li>
@@ -251,46 +225,7 @@
                                     $linkNext = ($l_page < $jumlahPage) ? $l_page + 1 : $jumlahPage;
                                 ?>
                                     <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkNext.$s.$k1 ?>">Next</a></li>
-=======
-                                    $text_kategori = [];
-
-                                    for ($i = 0; $i < count($data_kategori); $i++) {
-
-                                        $text_kategori += [$i => 'kategori%5B%5D=' . $data_kategori[$i]];
-                                    };
-                                    $kat = str_replace(" ", "+", implode('&', $text_kategori));
-
-                                ?>
-                                    <!-- Pembatas -->
-                                    <?php if ($l_page == 1) { ?>
-                                        <li class="page-item"><a class="btn page-link disabled" href="#">Previous</a></li>
-
-                                    <?php } else {
-                                        $linkPrev = ($l_page > 1) ? $l_page - 1 : 1;
-                                    ?>
-                                        <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkPrev ?>&search=<?= $data_search ?>&<?= $kat ?>">Previous</a></li>
-                                    <?php }
-                                    $jumlahNumber = 1;
-                                    $startNumber = ($l_page > $jumlahNumber) ? $l_page - $jumlahNumber : 1;
-                                    $endNumber = ($l_page < ($jumlahPage - $jumlahNumber)) ? $l_page + $jumlahNumber : $jumlahPage;
-                                    for ($i = $startNumber; $i <= $endNumber; $i++) {
-                                        $linkActive = ($l_page == $i) ? 'active' : '';
-
-                                    ?>
-                                        <li class="page-item <?= $linkActive ?>"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $i ?>&search=<?= $data_search ?>&<?= $kat ?>"><?= $i ?></a></li>
-                                    <?php
-                                    }
-                                    if ($l_page == $jumlahPage) {
-                                    ?>
-                                        <li class="page-item"><a class="btn page-link disabled" href="#">Next</a></li>
-                                    <?php } else {
-                                        $linkNext = ($l_page < $jumlahPage) ? $l_page + 1 : $jumlahPage;
-                                    ?>
-                                        <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkNext ?>&search=<?= $data_search ?>&<?= $kat ?>">Next</a></li>
-                                    <?php } ?>
->>>>>>> origin/dev
                                 <?php } ?>
-
                             </ul>
                         </nav>
                     </div>

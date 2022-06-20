@@ -182,7 +182,7 @@
                                 <p class="subtitle">Sign-up today </p>
                             </div>
                             <div class="col-lg-3 offset-lg-1 col-md-5 align-self-center">
-                                <img src="<?= base_url() ?>/assets/marketspot/assets/img/illustrations/03.svg" alt="" class="img-fluid">
+                                <!-- <img src="<?= base_url() ?>/assets/marketspot/assets/img/illustrations/03.svg" alt="" class="img-fluid"> -->
                             </div>
                         </div>
                     </div>
