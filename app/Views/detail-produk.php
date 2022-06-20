@@ -85,7 +85,7 @@
                                         <p>Produk pada toko yang sama</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="#" class="btn btn-link float-right">Lihat Toko → </a>
+                                        <a href="<?=base_url()?>/seller?id=<?= $l_detail->idumkm ?>" class="btn btn-link float-right">Lihat Toko → </a>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -93,7 +93,7 @@
                                         <div class="col-md-4">
                                             <div class="card item-card h-100 border-0">
                                                 <div class="item-card__image rounded">
-                                                    <a href="produk/id/<?= $lp->idproduk ?>" class="swap-link">
+                                                    <a href="<?=base_url()?>/produk/id/<?= $lp->idproduk ?>" class="swap-link">
                                                         <img src="<?= base_url() ?>/uploads/user/umkm/user<?= $lp->iduser ?>/prd/<?= $lp->product_main_pic ?>" class="img-fluid rounded" alt="">
                                                     </a>
                                                     <div class="hover-icons">
