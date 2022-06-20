@@ -179,9 +179,13 @@
                                                     <div class="d-flex justify-content-between align-items-center item-meta">
                                                         <div class="short-description mb-0">
                                                             <p class="mb-0 extension-text">
-                                                                <a href="<?= base_url() ?>/produk?search=&kategori[]=<?= $row->category_name ?>"><?= $row->category_name ?></a>
-                                                                <span class="ml-1">in</span>
-                                                                <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a>
+                                                                <a href="<?= base_url() ?>/produk?search=&kategori[]=<?= $row->category_name ?>">
+                                                                    <?= $row->category_name ?>
+                                                                </a>
+                                                                <span class="ml-1">di</span>
+                                                                <a href="seller?id=<?= $row->idumkm ?>">
+                                                                    <?= $row->umkm_name ?>
+                                                                </a>
                                                             </p>
                                                         </div>
                                                     </div>

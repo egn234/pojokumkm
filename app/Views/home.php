@@ -40,20 +40,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <ul class="nav search-links">
-                                        <li class="nav-item">
-                                            <a class="nav-link text-body-color" href="search-page.html">Filter Kategori:</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="search-page.html">UI kits</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="search-page.html">Templates</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="search-page.html">WordPress</a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -154,8 +140,8 @@
                                             <div class="short-description mb-0">
                                                 <p class="mb-0 extension-text">
                                                     <a href="<?=base_url()?>/produk?search=&kategori[]=<?=$lpk->category_name?>"><?= $lpk->category_name ?></a>
-                                                    <span class="ml-1">in</span> 
-                                                    <a href="seller?id=<?= $lpk->idumkm ?>"><?= $lpk->umkm_name ?></a>
+                                                    <span class="ml-1">di</span> 
+                                                    <a href="<?=base_url()?>/seller?id=<?= $lpk->idumkm ?>"><?= $lpk->umkm_name ?></a>
                                                 </p>
                                             </div>
                                         </div>

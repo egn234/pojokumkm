@@ -9,7 +9,10 @@
                     <ul class="navbar-nav">
                         <li class="nav-item swap-link <?= ($title == 'Home') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/home" class="nav-link">Home</a> </li>
                         <li class="nav-item swap-link <?= ($title == 'List Produk') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/produk" class="nav-link">Produk</a> </li>
-                        <li class="nav-item swap-link <?= ($title == 'List Produk Rekomendasi') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/produk/recom" class="nav-link">Produk Rekomendasi</a> </li>
+                        <!-- <li class="nav-item swap-link <?= ($title == 'List Produk Rekomendasi') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/produk/recom" class="nav-link">Produk Rekomendasi</a> </li> -->
+                        <li class="nav-item swap-link <?= ($title == 'List Umkm') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/home/umkm" class="nav-link">UMKM</a> </li>
+                        <li class="nav-item swap-link <?= ($title == 'List Kategori') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/kategori" class="nav-link">Kategori</a> </li>
+                        <li class="nav-item swap-link <?= ($title == 'Contact Us') ? 'active' : '' ?>"> <a href="<?= base_url() ?>/home/contact_us" class="nav-link">Contact Us</a> </li>
                     </ul>
                     <ul class="navbar-nav">
                         <?php if (session()->get('logged_in') == TRUE) { ?>

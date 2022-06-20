@@ -117,7 +117,15 @@
                                                     <!-- end: Card info -->
                                                     <div class="d-flex justify-content-start align-items-center item-meta">
                                                         <div class="short-description mb-0">
-                                                            <p class="mb-0 extension-text"><a href="#"><?= $lp->category_name ?></a><span class="ml-1">di</span> <a href="#"><?= $lp->umkm_name ?></a> </p>
+                                                            <p class="mb-0 extension-text">
+                                                                <a href="<?=base_url()?>/produk?search=&kategori[]=<?=$lp->category_name?>">
+                                                                    <?= $lp->category_name ?>
+                                                                </a>
+                                                                <span class="ml-1">di</span> 
+                                                                <a href="<?=base_url()?>/seller?id=<?= $lp->idumkm ?>">
+                                                                    <?= $lp->umkm_name ?>
+                                                                </a> 
+                                                            </p>
                                                         </div>
                                                     </div>
                                                     <!-- end: Card meta -->

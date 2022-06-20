@@ -127,17 +127,21 @@
                                     </aside>
                                     <!-- col.// -->
                                     <div class="col-lg-5 col-sm-12">
-                                        <div class="info-main p-4"> <a href="#" class="h4 title"><?= $row->product_name ?> </a>
+                                        <div class="info-main p-4"> <a href="produk/id/<?= $row->idproduk ?>" class="h4 title"><?= $row->product_name ?> </a>
                                             <div class="d-flex justify-content-start align-items-center item-meta mt-2">
                                                 <div class="short-description mb-0">
-                                                    <p class="mb-0 extension-text text-small"><a href="#"><?= $row->category_name ?></a><span class="ml-1">in</span> <a href="#"><?= $row->umkm_name ?></a> </p>
+                                                    <p class="mb-0 extension-text text-small">
+                                                        <a href="<?=base_url()?>/produk?search=&kategori[]=<?=$row->category_name?>">
+                                                            <?= $row->category_name ?>
+                                                        </a>
+                                                        <span class="ml-1">di</span> 
+                                                        <a href="<?=base_url()?>/seller?id=<?= $row->idumkm ?>">
+                                                            <?= $row->umkm_name ?>
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <ul class="list-unstyled mt-3">
-                                                <!-- <li> <i class="las la-check mr-2 text-success"></i>25 Illustrations </li>
-                                                <li> <i class="las la-check mr-2 text-success"></i>Bright &amp; Modern Style
-                                                </li>
-                                                <li><i class="las la-check mr-2 text-success"></i>Fully Vector</li> -->
                                             </ul>
                                         </div>
                                         <!-- info-main.// -->
@@ -145,13 +149,8 @@
                                     <!-- col.// -->
                                     <aside class="col-lg-3 col-sm-12">
                                         <div class="info-aside text-center d-flex align-items-start flex-column p-4">
-                                            <!-- <div class="price-wrap"> <span class="price h4"> $49 </span> <del class="price-old text-muted"> $32</del> </div> -->
-                                            <!-- info-price-detail // -->
-                                            <!-- <p class="text-success">12 Months support</p> -->
                                             <br> <a href="produk/id/<?= $row->idproduk ?>" class="btn btn-primary btn-block"> Detail Produk</a>
                                             <div class="btn-group btn-block">
-                                                <!-- <a href="#" class="btn btn-white" title="Save to favorite"> <i class="lar la-heart"></i></a>
-                                                <a href="#" class="btn btn-white" title="Buy item"> <i class="las la-shopping-cart"></i></a> -->
                                             </div>
                                         </div>
                                         <!-- info-aside.// -->
