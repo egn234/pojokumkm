@@ -14,10 +14,17 @@ class Home extends BaseController{
 
   public function index(){
   	$l_produk = $this->m_produk->getHomeProduct();
-  	$rand_id = $this->m_kategori->getIdKategoriRand()[0]->idkategori;
+  	$cek_rand = $this->m_kategori->getIdKategoriRand();
+  	
+  	if ($cek_rand != null) {
+  		$rand_id = $this->m_kategori->getIdKategoriRand()[0]->idkategori;
+  		$kat_name = $this->m_kategori->getKategoriById($rand_id)[0]->category_name;
+  		$l_rand_produk = $this->m_produk->getHomeProductRand($rand_id);  	
+  	}else{
+  		$kat_name = "";
+  		$l_rand_produk = "";
+  	}
 
-  	$kat_name = $this->m_kategori->getKategoriById($rand_id)[0]->category_name;
-  	$l_rand_produk = $this->m_produk->getHomeProductRand($rand_id);
 
 		$data = [
 			'title_meta' => view('homepage_partial/title-meta', ['title' => 'Home']),

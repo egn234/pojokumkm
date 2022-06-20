@@ -21,10 +21,12 @@ class Produk extends BaseController
 		$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
 
 		if (isset($_GET['search']) || isset($_GET['kategori'])) {
-			$keyword = ["category_name LIKE '%$kategori[0]%'"];
-			//LOOP BUAT CARI KATEGORI
-			for ($i = 1; $i < count($kategori); $i++) {
-				array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+			if(isset($_GET['kategori'])){
+				$keyword = ["category_name LIKE '%$kategori[0]%'"];
+				//LOOP BUAT CARI KATEGORI
+				for ($i = 1; $i < count($kategori); $i++) {
+					array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
+				}
 			}
 
 			if ($_GET['search'] == "" && isset($_GET['kategori'])) {

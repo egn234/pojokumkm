@@ -1,3 +1,19 @@
+<?php
+    $s = "";
+    $k = [];
+    $k1 = "";
+
+    if (isset($_GET['search'])) {
+        $s = "&search=".$_GET['search'];
+    }
+
+    if (isset($_GET['kategori'])) {
+        for($x = 0; $x < count($_GET['kategori']); $x++ ){
+            array_push($k, "&kategori%5B%5D=".$_GET['kategori'][$x]);
+        }
+        $k1 = implode("", $k);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,93 +98,103 @@
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-9">
-                        <div class="row">
-                            <?php
-                            foreach ($l_Ads_Random as $row) {
-                            ?>
-                                <div class="col-md-4">
-                                    <!-- edit in partials -->
-                                    <div class="card item-card h-100 border-0">
-                                        <div class="item-card__image rounded product" style="height: 250px; 
-                                            background-image: url(<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>);">
-                                            <a href="produk/id/<?= $row->idproduk ?>"></a>
-                                            <div class="hover-icons">
-                                                <ul class="list-unstyled">
-                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end: Item card image -->
-                                        <div class="card-body px-0 pt-3">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="item-title">
-                                                    <a href="produk/id/<?= $row->idproduk ?>">
-                                                        <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
-                                                    </a>
+                        <div class="row mb-3">
+                            <div class="col-12 p-2 border border-5 border-warning rounded">
+                                <span class="p-1"><b>Rekomendasi Produk</b></span>
+                                <div class="row">
+                                    <?php
+                                    foreach ($l_Ads_Random as $row) {
+                                    ?>
+                                        <div class="col-md-4">
+                                            <!-- edit in partials -->
+                                            <div class="card item-card h-100 border-0">
+                                                <div class="item-card__image rounded product" style="height: 250px; 
+                                                    background-image: url(<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>);">
+                                                    <a href="produk/id/<?= $row->idproduk ?>"></a>
+                                                    <div class="hover-icons">
+                                                        <ul class="list-unstyled">
+                                                            <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- end: Card info -->
-                                            <div class="d-flex justify-content-between align-items-center item-meta">
-                                                <div class="short-description mb-0">
-                                                    <p class="mb-0 extension-text">
-                                                        <a href="<?= base_url() ?>/produk?search=&kategori[]=<?= $row->category_name ?>"><?= $row->category_name ?></a>
-                                                        <span class="ml-1">in</span>
-                                                        <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a>
-                                                    </p>
+                                                <!-- end: Item card image -->
+                                                <div class="card-body px-0 pt-3">
+                                                    <div class="d-flex justify-content-between align-items-start">
+                                                        <div class="item-title">
+                                                            <a href="produk/id/<?= $row->idproduk ?>">
+                                                                <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end: Card info -->
+                                                    <div class="d-flex justify-content-between align-items-center item-meta">
+                                                        <div class="short-description mb-0">
+                                                            <p class="mb-0 extension-text">
+                                                                <a href="<?= base_url() ?>/produk?search=&kategori[]=<?= $row->category_name ?>"><?= $row->category_name ?></a>
+                                                                <span class="ml-1">in</span>
+                                                                <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end: Card meta -->
                                                 </div>
+                                                <!-- edn:Card body -->
                                             </div>
-                                            <!-- end: Card meta -->
+                                            <!-- end: Card -->
                                         </div>
-                                        <!-- edn:Card body -->
-                                    </div>
-                                    <!-- end: Card -->
+                                        <!-- end: col -->
+                                    <?php } ?>
                                 </div>
-                                <!-- end: col -->
-                            <?php } ?>
+                            </div>
                         </div>
-                        <div class="row">
-                            <?php
-                            foreach ($l_produk as $row) {
-                            ?>
-                                <div class="col-md-4">
-                                    <!-- edit in partials -->
-                                    <div class="card item-card h-100 border-0">
-                                        <div class="item-card__image rounded product" style="height: 250px; 
-                                            background-image: url(<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>);">
-                                            <a href="produk/id/<?= $row->idproduk ?>"></a>
-                                            <div class="hover-icons">
-                                                <ul class="list-unstyled">
-                                                    <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end: Item card image -->
-                                        <div class="card-body px-0 pt-3">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="item-title">
-                                                    <a href="produk/id/<?= $row->idproduk ?>">
-                                                        <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
-                                                    </a>
+                        <div class="row mb-3">
+                            <div class="col-12 p-2">
+                                <span class="p-1"><b>Daftar Produk</b></span>
+                                <div class="row">
+                                    <?php
+                                    foreach ($l_produk as $row) {
+                                    ?>
+                                        <div class="col-md-4">
+                                            <!-- edit in partials -->
+                                            <div class="card item-card h-100 border-0">
+                                                <div class="item-card__image rounded product" style="height: 250px; 
+                                                    background-image: url(<?= base_url() ?>/uploads/user/umkm/user<?= $row->iduser ?>/prd/<?= $row->product_main_pic ?>);">
+                                                    <a href="produk/id/<?= $row->idproduk ?>"></a>
+                                                    <div class="hover-icons">
+                                                        <ul class="list-unstyled">
+                                                            <li><a href="produk/id/<?= $row->idproduk ?>" data-toggle="tooltip" data-placement="left" title="Demo"><i class="las la-desktop"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- end: Card info -->
-                                            <div class="d-flex justify-content-between align-items-center item-meta">
-                                                <div class="short-description mb-0">
-                                                    <p class="mb-0 extension-text">
-                                                        <a href="<?= base_url() ?>/produk?search=&kategori[]=<?= $row->category_name ?>"><?= $row->category_name ?></a>
-                                                        <span class="ml-1">in</span>
-                                                        <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a>
-                                                    </p>
+                                                <!-- end: Item card image -->
+                                                <div class="card-body px-0 pt-3">
+                                                    <div class="d-flex justify-content-between align-items-start">
+                                                        <div class="item-title">
+                                                            <a href="produk/id/<?= $row->idproduk ?>">
+                                                                <h3 class="h5 mb-0 text-truncate"><?= $row->product_name ?></h3>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end: Card info -->
+                                                    <div class="d-flex justify-content-between align-items-center item-meta">
+                                                        <div class="short-description mb-0">
+                                                            <p class="mb-0 extension-text">
+                                                                <a href="<?= base_url() ?>/produk?search=&kategori[]=<?= $row->category_name ?>"><?= $row->category_name ?></a>
+                                                                <span class="ml-1">in</span>
+                                                                <a href="seller?id=<?= $row->idumkm ?>"><?= $row->umkm_name ?></a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end: Card meta -->
                                                 </div>
+                                                <!-- edn:Card body -->
                                             </div>
-                                            <!-- end: Card meta -->
+                                            <!-- end: Card -->
                                         </div>
-                                        <!-- edn:Card body -->
-                                    </div>
-                                    <!-- end: Card -->
+                                        <!-- end: col -->
+                                    <?php } ?>
                                 </div>
-                                <!-- end: col -->
-                            <?php } ?>
+                            </div>
                         </div>
                         <hr class="divider divider-fade" />
                         <!-- edit in partials -->
@@ -180,7 +206,7 @@
                                 <?php } else {
                                     $linkPrev = ($l_page > 1) ? $l_page - 1 : 1;
                                 ?>
-                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkPrev ?>">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkPrev.$s.$k1 ?>">Previous</a></li>
                                 <?php }
                                 $jumlahNumber = 1;
                                 $startNumber = ($l_page > $jumlahNumber) ? $l_page - $jumlahNumber : 1;
@@ -189,7 +215,7 @@
                                     $linkActive = ($l_page == $i) ? 'active' : '';
 
                                 ?>
-                                    <li class="page-item <?= $linkActive ?>"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $i ?>"><?= $i ?></a></li>
+                                    <li class="page-item <?= $linkActive ?>"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $i.$s.$k1 ?>"><?= $i ?></a></li>
                                 <?php
                                 }
                                 if ($l_page == $jumlahPage) {
@@ -198,7 +224,7 @@
                                 <?php } else {
                                     $linkNext = ($l_page < $jumlahPage) ? $l_page + 1 : $jumlahPage;
                                 ?>
-                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkNext ?>">Next</a></li>
+                                    <li class="page-item"><a class="page-link" href="<?= base_url() ?>/produk?page=<?= $linkNext.$s.$k1 ?>">Next</a></li>
                                 <?php } ?>
                             </ul>
                         </nav>
