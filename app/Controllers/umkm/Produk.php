@@ -521,7 +521,7 @@ class Produk extends \App\Controllers\BaseController
 	{
 		$this->newUser();
 		$iduser = session()->get('iduser');
-		$idpengelola = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->idpengelola;
+		$idumkm = $this->m_umkm->getJoinUserUmkm($iduser)[0]->idumkm;
 
 		$this->m_produk->deleteLinkProdukByIdProduk($idproduk);
 		$this->m_produk->deleteProdukByIdProduk($idproduk);
@@ -535,6 +535,6 @@ class Produk extends \App\Controllers\BaseController
 		);
 		session()->setFlashdata('notif', $alert);
 
-		return redirect()->to(base_url('pengelola/produk/list'));
+		return redirect()->to(base_url('umkm/produk/list'));
 	}
 }
