@@ -4,7 +4,7 @@
 
     <?= $title_meta ?>
 
-    <link href="<?=base_url()?>/assets/minia/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>/assets/minia/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 
     <?= $this->include('partials/head-css') ?>
 
@@ -33,7 +33,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PojokUMKM</a></li>
+                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/dashboard">PojokUMKM</a></li>
                                     <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
                             </div>
@@ -51,19 +51,20 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-6">
-                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">My Wallet</span>
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Produk</span>
                                         <h4 class="mb-3">
-                                            $<span class="counter-value" data-target="865.2">0</span>k
+                                            <span class="counter-value" data-target="<?= $jumlah_produk ?>">0</span>
                                         </h4>
                                     </div>
 
-                                    <div class="col-6">
+                                    <!-- <div class="col-6">
                                         <div id="mini-chart1" data-colors='["#5156be"]' class="apex-charts mb-2"></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success">+$20.9k</span>
-                                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                                    <a href="<?= base_url() ?>/umkm/produk/list" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                    <!-- <span class="badge bg-soft-danger text-danger">-29 Trades</span> -->
+                                    <!-- <span class="ms-1 text-muted font-size-13">Since last week</span> -->
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
@@ -76,18 +77,18 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-6">
-                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Number of Trades</span>
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Kategori Produk</span>
                                         <h4 class="mb-3">
-                                            <span class="counter-value" data-target="6258">0</span>
+                                            <span class="counter-value" data-target="<?= $jml_kat_produk ?>">0</span>
                                         </h4>
                                     </div>
-                                    <div class="col-6">
-                                        <div id="mini-chart2" data-colors='["#5156be"]' class="apex-charts mb-2"></div>
-                                    </div>
+                                    <!-- <div class="col-6">
+                                    </div> -->
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-danger text-danger">-29 Trades</span>
-                                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                                    <a href="<?= base_url() ?>/umkm/produk/list" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                    <!-- <span class="badge bg-soft-danger text-danger">-29 Trades</span> -->
+                                    <!-- <span class="ms-1 text-muted font-size-13">Since last week</span> -->
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
@@ -100,18 +101,19 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-6">
-                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Invested Amount</span>
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Voucher Iklan</span>
                                         <h4 class="mb-3">
-                                            $<span class="counter-value" data-target="4.32">0</span>M
+                                            <span class="counter-value" data-target="<?= $jml_voucher ?>">0</span>
                                         </h4>
                                     </div>
-                                    <div class="col-6">
+                                    <!-- <div class="col-6">
                                         <div id="mini-chart3" data-colors='["#5156be"]' class="apex-charts mb-2"></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success">+ $2.8k</span>
-                                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                                    <a href="<?= base_url() ?>/umkm/Iklan/list" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                    <!-- <span class="badge bg-soft-danger text-danger">-29 Trades</span> -->
+                                    <!-- <span class="ms-1 text-muted font-size-13">Since last week</span> -->
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
@@ -124,24 +126,25 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-6">
-                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Profit Ration</span>
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Produk Diiklankan</span>
                                         <h4 class="mb-3">
-                                            <span class="counter-value" data-target="12.57">0</span>%
+                                            <span class="counter-value" data-target="<?= $jml_produk_ads ?>">0</span>
                                         </h4>
                                     </div>
-                                    <div class="col-6">
+                                    <!-- <div class="col-6">
                                         <div id="mini-chart4" data-colors='["#5156be"]' class="apex-charts mb-2"></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="text-nowrap">
-                                    <span class="badge bg-soft-success text-success">+2.95%</span>
-                                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                                    <a href="<?= base_url() ?>/umkm/produk/list" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                    <!-- <span class="badge bg-soft-danger text-danger">-29 Trades</span> -->
+                                    <!-- <span class="ms-1 text-muted font-size-13">Since last week</span> -->
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
                 </div><!-- end row-->
-
+                <!-- start here dashboard -->
                 <div class="row">
                     <div class="col-xl-5">
                         <!-- card -->
@@ -1554,7 +1557,8 @@
                         <!-- end card -->
                     </div>
                     <!-- end col -->
-                </div><!-- end row -->
+                </div>
+                <!-- end row -->
             </div>
             <!-- container-fluid -->
         </div>
@@ -1571,16 +1575,16 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- apexcharts -->
-<script src="<?=base_url()?>/assets/minia/assets/libs/apexcharts/apexcharts.min.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/libs/apexcharts/apexcharts.min.js"></script>
 
 <!-- Plugins js-->
-<script src="<?=base_url()?>/assets/minia/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="<?=base_url()?>/assets/minia/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
 <!-- dashboard init -->
-<script src="<?=base_url()?>/assets/minia/assets/js/pages/dashboard.init.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/js/pages/dashboard.init.js"></script>
 
 <!-- App js -->
-<script src="<?=base_url()?>/assets/minia/assets/js/app.js"></script>
+<script src="<?= base_url() ?>/assets/minia/assets/js/app.js"></script>
 </body>
 
 </html>

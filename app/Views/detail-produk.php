@@ -19,8 +19,8 @@
                         <div class="col-md-9">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item mr-1 font-weight-bold"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item mr-1 font-weight-bold"><a href="#"><?= $l_detail->category_name ?></a></li>
+                                    <li class="breadcrumb-item mr-1 font-weight-bold"><a href="/home">Home</a></li>
+                                    <li class="breadcrumb-item mr-1 font-weight-bold"><a href="/produk?search=&kategori%5B%5D=<?= $l_detail->category_name ?>"><?= $l_detail->category_name ?></a></li>
                                     <li class="breadcrumb-item ml-1 font-weight-bold active" aria-current="page">
                                         <?= $l_detail->product_name ?>
                                     </li>
@@ -110,9 +110,9 @@
                                                                 <h3 class="h5 mb-0 text-truncate"><?= $lp->product_name ?></h3>
                                                             </a>
                                                         </div>
-                                                        <div class="item-price">
+                                                        <!-- <div class="item-price">
                                                             <span>$14</span>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <!-- end: Card info -->
                                                     <div class="d-flex justify-content-start align-items-center item-meta">
