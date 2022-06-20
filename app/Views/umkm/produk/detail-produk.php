@@ -132,7 +132,7 @@ if ($hitung_link > 0) {
                                                 <a href="<?= base_url() ?>/umkm/produk/edit/<?= $l_detail->idproduk ?>" class="btn btn-soft-info"><i class="fa fa-edit"></i> Ubah Info Produk</a>
                                             </div>
                                             <div>
-                                                <button type="button" class="btn btn-soft-danger"><i class="fa fa-trash"></i> Hapus</button>
+                                                <button type="button" class="btn btn-soft-danger" data-bs-toggle="modal" data-bs-target="#delProduk"><i class="fa fa-trash"></i> Hapus</button>
                                             </div>
                                         </div>
                                     </div>
@@ -271,6 +271,63 @@ if ($hitung_link > 0) {
 <!-- END layout-wrapper -->
 
 <!-- sample modal content -->
+<div id="addLink" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tambah Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="konfirAdd" action="<?=base_url()?>/umkm/produk/add_link/<?=$l_detail->idproduk?>" method="post">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Link</label>
+                                <div class="col-sm-12">
+                                    <input type="text" name="link_name" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="mb-3">
+                                <label class="form-label">Link Produk</label>
+                                <div class="col-sm-12">
+                                    <input type="text" name="product_link" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- sample modal content -->
+<div id="delProduk" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tambah Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                PERHATIAN: Apakah anda ingin menghapus produk ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/pengelola/produk/del_proc/<?=$l_detail->idproduk?>" class="btn btn-danger">Hapus</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- sample modal content -->
 <div id="setAds" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -305,7 +362,8 @@ if ($hitung_link > 0) {
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div>
+<!-- /.modal -->
 
 
 <?= $this->include('umkm/right-sidebar') ?>

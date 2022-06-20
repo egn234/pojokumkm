@@ -517,44 +517,24 @@ class Produk extends \App\Controllers\BaseController
 		return redirect()->to(base_url('umkm/produk/list'));
 	}
 
-	/**
-    public function upload_img1($iduser){
-    	$img = $this->request->getFile('foto1');
-    	$newName = 'prd_ex1_'.$iduser.'_'.$img->getRandomName();
+	public function del_proc($idproduk)
+	{
+		$this->newUser();
+		$iduser = session()->get('iduser');
+		$idpengelola = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->idpengelola;
 
-    	$img->move(ROOTPATH.'public/uploads/user/umkm/user'.$iduser.'/prd/', $newName);
-    	$data = [
-    		'name' => $img->getName(),
-    		'type' => $img->getClientMimeType()
-    	];
+		$this->m_produk->deleteLinkProdukByIdProduk($idproduk);
+		$this->m_produk->deleteProdukByIdProduk($idproduk);
 
-    	return $data;
-    }
+		$alert = view(
+			'partials/notification-alert',
+			[
+				'notif_text' => 'Produk dihapus',
+				'status' => 'warning'
+			]
+		);
+		session()->setFlashdata('notif', $alert);
 
-    public function upload_img2($iduser){
-    	$img = $this->request->getFile('foto2');
-    	$newName = 'file2_'.$img->getRandomName();
-
-    	$img->move(ROOTPATH.'public/uploads/user/umkm/user'.$iduser.'/prd/', $newName);
-    	$data = [
-    		'name' => $img->getName(),
-    		'type' => $img->getClientMimeType()
-    	];
-
-    	return $data;
-    }
-
-    public function upload_img3($iduser){
-    	$img = $this->request->getFile('foto3');
-    	$newName = 'file3_'.$img->getRandomName();
-
-    	$img->move(ROOTPATH.'public/uploads/user/umkm/user'.$iduser.'/prd/', $newName);
-    	$data = [
-    		'name' => $img->getName(),
-    		'type' => $img->getClientMimeType()
-    	];
-
-    	return $data;
-    }
-	 **/
+		return redirect()->to(base_url('pengelola/produk/list'));
+	}
 }
