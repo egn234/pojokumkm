@@ -28,9 +28,10 @@ class M_produk extends Model
     $this->db = db_connect();
   }
 
-  public function getAllProduk()
+  public function getAllProduk($query = "")
   {
-    $sql = "SELECT tb_produk.*, 
+    if ($query != "") {
+      $sql = "SELECT tb_produk.*, 
         tb_user.iduser AS iduser, 
         tb_umkm.idumkm AS idumkm, 
         tb_umkm.umkm_name AS umkm_name, 
@@ -39,7 +40,22 @@ class M_produk extends Model
         tb_kategori.category_name AS category_name 
         FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
           RIGHT JOIN tb_produk USING (idumkm)
-          LEFT JOIN tb_kategori USING (idkategori)";
+          LEFT JOIN tb_kategori USING (idkategori)
+          WHERE (product_status = 'on') 
+        AND ($query)";
+    } else {
+      $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name 
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          LEFT JOIN tb_kategori USING (idkategori)
+          WHERE (product_status = 'on')";
+    }
 
     return $this->db->query($sql)->getResult();
   }
@@ -75,6 +91,24 @@ class M_produk extends Model
           LEFT JOIN tb_kategori USING (idkategori)
           WHERE idumkm = $idumkm";
 
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function getKategoriProdukByUmkm($idumkm)
+  {
+    $sql = "SELECT tb_produk.*,
+    tb_user.iduser AS iduser,
+    tb_umkm.idumkm AS idumkm,
+    tb_umkm.umkm_name AS umkm_name,
+    tb_umkm.umkm_pic AS umkm_pic,
+    tb_kategori.idkategori AS idkategori,
+    tb_kategori.category_name AS category_name
+    FROM tb_user
+    RIGHT JOIN tb_umkm USING (iduser) 
+    RIGHT JOIN tb_produk USING (idumkm) 
+    LEFT JOIN tb_kategori USING (idkategori) 
+    WHERE idumkm = $idumkm 
+    GROUP BY category_name";
     return $this->db->query($sql)->getResult();
   }
 
@@ -337,6 +371,26 @@ class M_produk extends Model
   public function getProdukAdsAll()
   {
     $sql = "SELECT * FROM `tr_umkm_ads_used`";
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function getProdukAdsByIdUmkm($idumkm)
+  {
+    $sql = "SELECT tb_produk.*, 
+        tb_user.iduser AS iduser, 
+        tb_umkm.idumkm AS idumkm, 
+        tb_umkm.umkm_name AS umkm_name, 
+        tb_umkm.umkm_pic AS umkm_pic,
+        tb_kategori.idkategori AS idkategori,
+        tb_kategori.category_name AS category_name,
+        tr_umkm_ads_used.ads_date_finished AS deadline
+        FROM tb_user RIGHT JOIN tb_umkm USING (iduser) 
+          RIGHT JOIN tb_produk USING (idumkm)
+          JOIN tr_umkm_ads_used USING (idproduk)
+          LEFT JOIN tb_kategori USING (idkategori)
+        WHERE tr_umkm_ads_used.ads_date_finished > now() 
+        AND tb_produk.product_status = 'on'
+        AND tb_umkm.idumkm = $idumkm";
     return $this->db->query($sql)->getResult();
   }
 }

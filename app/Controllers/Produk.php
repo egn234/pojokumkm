@@ -17,11 +17,12 @@ class Produk extends BaseController
 
 	public function index()
 	{
-		$search = (isset($_GET['search'])) ? explode(" ", $_GET['search']) : "";
-		$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
+
 
 		if (isset($_GET['search']) || isset($_GET['kategori'])) {
-			$keyword = ["category_name LIKE '%$kategori[0]%'"];
+			$search = (isset($_GET['search'])) ? explode(" ", $_GET['search']) : "";
+			$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
+			$keyword = (isset($_GET['kategori'])) ? ["category_name LIKE '%$kategori[0]%'"] : '';
 			//LOOP BUAT CARI KATEGORI
 			for ($i = 1; $i < count($kategori); $i++) {
 				array_push($keyword, "OR category_name LIKE '%$kategori[$i]%' ");
@@ -54,9 +55,14 @@ class Produk extends BaseController
 			// Jumlah data per halaman
 			$limit = 12;
 			$limitStart = ($page - 1) * $limit;
-			$allProduk = count($this->m_produk->getAllproduk());
+			$allProduk = count($this->m_produk->getAllproduk($query));
 			$jumlahPage = ceil($allProduk / $limit);
 			$l_produk = $this->m_produk->getHomeProduct($limit, $limitStart, $search, $query);
+			$data = [
+				'search' => 1,
+				'data_search' => str_replace(" ", "+", $_GET['search']),
+				'data_kategori' => $kategori
+			];
 		} else {
 			$allProduk = count($this->m_produk->getAllproduk());
 			$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
@@ -66,10 +72,11 @@ class Produk extends BaseController
 			$jumlahPage = ceil($allProduk / $limit);
 			$limitStart = ($page - 1) * $limit;
 			$l_produk = $this->m_produk->getHomeProduct($limit, $limitStart);
+			$data = ['search' => 0];
 		}
 		$getAllkategori = $this->m_kategori->getAllKategori();
 
-		$data = [
+		$data += [
 			'title_meta' => view('homepage_partial/title-meta', ['title' => 'List Produk']),
 			'l_produk' => $l_produk,
 			'l_page' => $page,
@@ -98,10 +105,9 @@ class Produk extends BaseController
 
 	public function recom()
 	{
-		$search = (isset($_GET['search'])) ? explode(" ", $_GET['search']) : "";
-		$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
-
 		if (isset($_GET['search']) || isset($_GET['kategori'])) {
+			$search = (isset($_GET['search'])) ? explode(" ", $_GET['search']) : "";
+			$kategori = (isset($_GET['kategori'])) ?  $_GET['kategori'] : [];
 			if ($_GET['search'] == "" && isset($_GET['kategori'])) {
 				$keyword = ["category_name LIKE '%$kategori[0]%'"];
 
