@@ -183,7 +183,46 @@ if ($hitung_link > 0) {
                                                         <?php foreach ($l_link_produk as $li) { ?>
                                                             <li class="py-1">
                                                                 <a href="<?= prep_url($li->link_address) ?>" target="_blank">
-                                                                    <?= $li->link_name ?> <i class="fa fa-external-link-alt"></i>
+                                                                    <?php if ($li->link_name == "twitter") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/twitter.png" width="18">
+                                                                        Twitter
+                                                                    <?php }elseif ($li->link_name == "facebook") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/facebook.png" width="18">
+                                                                        Facebook
+                                                                    <?php }elseif ($li->link_name == "instagram") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/instagram.png" width="18">
+                                                                        Instagram
+                                                                    <?php }elseif ($li->link_name == "dcreativ") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/dcreativ.png" width="18">
+                                                                        D'Creativ
+                                                                    <?php }elseif ($li->link_name == "tokopedia") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/tokopedia.png" width="18">
+                                                                        Tokopedia
+                                                                    <?php }elseif ($li->link_name == "bukalapak") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/bukalapak.png" width="18">
+                                                                        Bukalapak
+                                                                    <?php }elseif ($li->link_name == "shopee") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/shopee.png" width="18">
+                                                                        Shopee
+                                                                    <?php }elseif ($li->link_name == "lazada") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/lazada.png" width="18">
+                                                                        Lazada
+                                                                    <?php }elseif ($li->link_name == "blibli") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/blibli.png" width="18">
+                                                                        Blibli
+                                                                    <?php }elseif ($li->link_name == "zalora") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/zalora.png" width="18">
+                                                                        Zalora
+                                                                    <?php }elseif ($li->link_name == "jdid") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/jdid.png" width="18">
+                                                                        JD.id
+                                                                    <?php }elseif ($li->link_name == "bhinneka") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/bhinneka.png" width="18">
+                                                                        Bhinneka
+                                                                    <?php }elseif ($li->link_name == "olx") {?>
+                                                                        <img src="<?=base_url()?>/assets/minia/assets/images/brands/olx.png" width="18">
+                                                                        OLX
+                                                                    <?php }?>
                                                                 </a>
                                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <a href="<?= base_url() ?>/umkm/produk/del_link/<?= $l_detail->idproduk ?>/<?= $li->idprodlink ?>">
@@ -285,7 +324,22 @@ if ($hitung_link > 0) {
                             <div class="mb-3">
                                 <label class="form-label">Nama Link</label>
                                 <div class="col-sm-12">
-                                    <input type="text" name="link_name" class="form-control" required>
+                                    <select class="form-select" name="link_name" required>
+                                        <option value="twitter">Twitter</option>
+                                        <option value="dcreativ">D'Creativ</option>
+                                        <option value="instagram">Instagram</option>
+                                        <option value="facebook">Facebook</option>
+                                        <option value="tokopedia">Tokopedia</option>
+                                        <option value="bukalapak">Bukalapak</option>
+                                        <option value="shopee">Shopee</option>
+                                        <option value="lazada">Lazada</option>
+                                        <option value="blibli">Blibli</option>
+                                        <option value="zalora">Zalora</option>
+                                        <option value="jdid">JD.id</option>
+                                        <option value="bhinneka">Bhinneka</option>
+                                        <option value="olx">OLX</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

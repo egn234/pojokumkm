@@ -179,7 +179,72 @@
                                                         <div class="row">
                                                             <div class="col-xl-2">
                                                                 <div>
-                                                                    <h5 class="font-size-15"><?=$li->umkm_link_name?></h5>
+                                                                    <?php if ($li->umkm_link_name == "twitter") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/twitter.png" width="18">
+                                                                            Twitter
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "facebook") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/facebook.png" width="18">
+                                                                            Facebook
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "instagram") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/instagram.png" width="18">
+                                                                            Instagram
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "dcreativ") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/dcreativ.png" width="18">
+                                                                            D'Creativ
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "tokopedia") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/tokopedia.png" width="18">
+                                                                            Tokopedia
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "bukalapak") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/bukalapak.png" width="18">
+                                                                            Bukalapak
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "shopee") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/shopee.png" width="18">
+                                                                            Shopee
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "lazada") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/lazada.png" width="18">
+                                                                            Lazada
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "blibli") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/blibli.png" width="18">
+                                                                            Blibli
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "zalora") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/zalora.png" width="18">
+                                                                            Zalora
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "jdid") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/jdid.png" width="18">
+                                                                            JD.id
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "bhinneka") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/bhinneka.png" width="18">
+                                                                            Bhinneka
+                                                                        </h5>
+                                                                    <?php }elseif ($li->umkm_link_name == "olx") {?>
+                                                                        <h5 class="font-size-15">
+                                                                            <img src="<?=base_url()?>/assets/minia/assets/images/brands/olx.png" width="18">
+                                                                            OLX
+                                                                        </h5>
+                                                                    <?php }?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-xl-auto">
@@ -368,19 +433,20 @@
                   <div class="form-group">
                     <label>Media Platform</label>
                     <select class="form-select" name="link_name" required>
-                        <option value="Twitter">Twitter</option>
-                        <option value="Instagram">Instagram</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Tokopedia">Tokopedia</option>
-                        <option value="Bukalapak">Bukalapak</option>
-                        <option value="Shopee">Shopee</option>
-                        <option value="Lazada">Lazada</option>
-                        <option value="Blibli">Blibli</option>
-                        <option value="Zalora">Zalora</option>
-                        <option value="JD.id">JD.id</option>
-                        <option value="Bhinneka">Bhinneka</option>
-                        <option value="OLX">OLX</option>
-                        <option value="Lainnya">Lainnya</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="dcreativ">D'Creativ</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="tokopedia">Tokopedia</option>
+                        <option value="bukalapak">Bukalapak</option>
+                        <option value="shopee">Shopee</option>
+                        <option value="lazada">Lazada</option>
+                        <option value="blibli">Blibli</option>
+                        <option value="zalora">Zalora</option>
+                        <option value="jdid">JD.id</option>
+                        <option value="bhinneka">Bhinneka</option>
+                        <option value="olx">OLX</option>
+                        <option value="lainnya">Lainnya</option>
                     </select>
                   </div>
                   <div class="form-group">
