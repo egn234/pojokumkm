@@ -43,7 +43,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PojokUMKM</a></li>
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/iklan/list">List Iklan</a></li>
                                     <li class="breadcrumb-item active">Detail Iklan</li>
                                 </ol>

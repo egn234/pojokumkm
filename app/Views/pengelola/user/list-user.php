@@ -40,7 +40,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PojokUMKM</a></li>
                                     <li class="breadcrumb-item active">List User</li>
                                 </ol>
                             </div>
@@ -54,7 +54,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">User yang terdaftar pada PAGlowUP dan belum mengisi Biodata</p>
+                                <p class="card-title-desc">User yang terdaftar pada PojokUMKM dan belum mengisi Biodata</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>

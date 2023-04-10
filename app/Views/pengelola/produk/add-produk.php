@@ -43,7 +43,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PojokUMKM</a></li>
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/produk/list">List Produk</a></li>
                                     <li class="breadcrumb-item active">Tambah Produk</li>
                                 </ol>
@@ -154,7 +154,22 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Nama Link</label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" name="link_name" class="form-control">
+                                                    <select class="form-select" name="link_name" required>
+                                                        <option value="twitter">Twitter</option>
+                                                        <option value="dcreativ">D'Creativ</option>
+                                                        <option value="instagram">Instagram</option>
+                                                        <option value="facebook">Facebook</option>
+                                                        <option value="tokopedia">Tokopedia</option>
+                                                        <option value="bukalapak">Bukalapak</option>
+                                                        <option value="shopee">Shopee</option>
+                                                        <option value="lazada">Lazada</option>
+                                                        <option value="blibli">Blibli</option>
+                                                        <option value="zalora">Zalora</option>
+                                                        <option value="jdid">JD.id</option>
+                                                        <option value="bhinneka">Bhinneka</option>
+                                                        <option value="olx">OLX</option>
+                                                        <option value="lainnya">Lainnya</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

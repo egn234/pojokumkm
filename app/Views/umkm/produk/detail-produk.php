@@ -55,7 +55,7 @@ if ($hitung_link > 0) {
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/dashboard">PojokUMKM</a></li>
                                     <li class="breadcrumb-item"><a href="<?= base_url() ?>/umkm/produk/list">List Produk</a></li>
                                     <li class="breadcrumb-item active">Detail Produk</li>
                                 </ol>
